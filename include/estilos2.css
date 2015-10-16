@@ -1,0 +1,193 @@
+/*Estilos para la pagina en general*/
+*{
+	padding: 0; margin: 0; 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#contenedor_general{
+	background-color: #252932;	
+}
+/*Fin estilos para la pagina en general*/
+/*Estilo de encabezado para la pagina en general*/
+#encabezado{
+	background-color: #252932;
+	z-index: 500;
+	color: #FFFFFF;
+	width: 100%;
+	height: 80px;
+}
+#encabezado .logo{
+	font-size: 40px;
+	line-height: 80px;
+	margin-right: 30px;
+	vertical-align: middle;
+	float: right;
+	-webkit-transition:all 500ms ease;
+	-o-transition:all 500ms ease;
+	transition:all 500ms ease;
+}
+.boton_menu, .boton_menu_lateral{
+	display: none;
+}
+#encabezado nav{
+	width: 50%;
+	font-size: 30px;
+	float:left;
+	line-height: 80px;
+	margin-left: 30px;
+	vertical-align: middle;
+	border-radius: 10px;
+	-webkit-transition:all 500ms ease;
+	-o-transition:all 500ms ease;
+	transition:all 500ms ease;
+}
+#encabezado nav ul{
+	list-style: none;
+}
+#encabezado nav ul li{
+	display: inline-block;
+	position: relative;	
+	display: block;
+	padding: 10px;	
+}
+.iconos_encabezado span:hover {
+	background-color: #2D9DC6;
+	padding: 10px 10px;
+	border-radius: 10px;
+	color: #FFFFFF;
+}
+.iconos_encabezado .icon-grid:hover .children1{
+	display: block;
+}
+.iconos_encabezado .icon-user:hover .children1{
+	display: block;
+}
+.iconos_encabezado .children1{
+	display: none;
+	background: #252932;
+	position: absolute;
+	width: 100%;
+	z-index: 500;
+	font-size: 15px;
+	cursor: pointer;
+}
+.iconos_encabezado .children1 li{
+	display: block;
+	overflow: hidden;
+	border-bottom: 2px solid rgba(255,255,255,.5);	
+}
+/*Fin estilo de encabezado para la pagina en general*/
+/*Se inicia estilos al encabezado cuando es movil o ventana menos de 768px
+ de principal.php*/			
+@media screen and (max-width: 768px){
+	#encabezado{
+		background-color: #252932;
+		z-index: 500;
+		color: #FFFFFF;
+		width: 100%;
+		height: 80px;
+		position: fixed;
+	}
+	#encabezado .logo {
+		top: 0;
+		font-size: 30px;
+		line-height: 60px;
+		vertical-align: middle;
+		text-align: center;
+		width: 100%;
+		position: fixed;
+	}
+	.boton_menu{/*.menu_bar*/
+		display: block;
+		width: 50%;
+		position: fixed;
+		top: 60;
+		background: #e6344a;
+		color: #FFFFFF;
+		padding: 20px;
+		overflow: hidden;
+		font-size: 15px;
+		font-weight: bold;
+	}
+	.boton_menu_lateral{
+		display: block;
+		width: 50%;
+		position: fixed;
+		top: 60;
+		background: #e6344a;
+		color: #FFFFFF;
+		padding: 20px;
+		overflow: hidden;
+		font-size: 15px;
+		font-weight: bold;
+		margin-left: 50%;
+		
+	}
+	.boton_menu a, .boton_menu_lateral a{
+		text-decoration: none;
+		color: #FFFFFF;
+	}
+	
+	#encabezado nav{
+		top:120px;
+		width:80%;
+		position:fixed;
+		left:100%;
+		margin:0;	
+		/*overflow: scroll;*/
+	}
+	#encabezado nav ul li{
+		display: block;
+		border-bottom: 2px solid rgba(255,255,255,.5);	
+	}
+	#encabezado nav ul li a{
+		display: block;
+	}
+	#encabezado nav ul li .children1{
+		position: relative;
+		width: 100%;
+	}
+	#encabezado nav ul li:hover .children1{
+		display: none;
+	}
+	#encabezado nav ul li .children1 li span{
+		margin-left: 20px;
+		display: none;
+	}
+}/*Hasta aqui terminan los estilos al encabezado cuando es movil o ventana menos de 768px
+ de principal.php*/	
+/*Estilo de menu_izquierda para la pagina en general*/
+#menu_izquierda{
+	background-color: red;
+	float: left;
+	width: 25%;
+	height: auto;
+}
+/*Fin estilo de menu_izquierda para la pagina en general*/
+/*Estilo de Contenido para la pagina en general*/
+#contenido{
+	background-color: #2D9DC6;
+	float: left;
+	width: 75%;
+	height: auto;
+}
+/*Fin de estilo de Contenido para la pagina en general*/
+/*Estilo de Contenido para la pagina en general cuando es movil o ventana menos de 768px*/
+
+@media screen and (max-width: 768px){
+	#contenido{
+		top:120px;
+	}
+}
+/* Fin de estilo de Contenido para la pagina en general cuando es movil o ventana menos de 768px*/
+
+/*Estilo de pie_pagina para la pagina en general*/
+#pie_pagina{
+	background-color: yellow;
+	float: none;
+	clear: both;
+	text-align: center;
+	width: 100%;
+}
+/*Fin de estilo de pie_pagina para la pagina en general*/
