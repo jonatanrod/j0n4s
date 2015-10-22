@@ -5,7 +5,7 @@ require_once('login/conexion.php');?>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Buscador de Remitente</title>
+	<title>Este es el Buscador de Remitente</title>
 	<!--<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type ="text/css">-->
 	<script type="text/javascript" src="include/js/jquery.js"></script>
 	<script type="text/javascript" src="include/js/funciones_contactos.js"></script>
