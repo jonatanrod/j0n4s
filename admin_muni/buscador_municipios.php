@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Buscador de Municipios</title>
 </head>
 <body>
 	<?php 
@@ -30,10 +30,10 @@
 						resultado obtenido*/
 							
 							echo $linea['nombre_municipio']." (".
-								 $linea['nombre_departamento'].")";
-							echo "<span>".$linea['nombre_pais']." - ".$linea['nombre_continente']."</span>";
+								 $linea['nombre_departamento'].") ";
+							echo "<span>".$linea['nombre_pais']." - ".$linea['nombre_continente']." "."</span>";
 						
-							echo "<span class='ver_creador'>Creado por ".$linea['creador_municipio']." (".
+							echo "<span class='ver_creador'> / Creado por ".$linea['creador_municipio']." (".
 								 $linea['fecha_creacion'].")</span>";
 						echo "</div>";//cierra div class='art'
 						
@@ -92,7 +92,7 @@
 		nombre_departamento, nombre_municipio, fecha_creacion, creador_municipio) VALUES 
 		($id_continente, '$continente','$pais','$departamento','$municipio','$fecha_creacion','$usuario')";
 	
-	$ejecuta_query = pg_query($conectado,$query);
+	$ejecuta_query = pg_query($conectado,$query) OR DIE ();
 	
 /*Hasta aqui inicio la interaccion con el formulario de insertar municipio*/
 

@@ -8,7 +8,7 @@ require_once('login/conexion.php');?>
 	<title>Buscador de Remitente</title>
 	<!--<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type ="text/css">-->
 	<script type="text/javascript" src="include/js/jquery.js"></script>
-	<script type="text/javascript" src="include/js/funciones_menu.js"></script>
+	<script type="text/javascript" src="include/js/funciones_contactos.js"></script>
 	<link rel="stylesheet" href="include/estilos_entrada.css">
 </head>
 <body>

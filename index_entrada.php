@@ -7,8 +7,8 @@ require_once('login/conexion.php');?>
 	<meta charset="UTF-8">
 	<title>Buscador de Remitente</title>
 	<!--<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type ="text/css">-->
-	<script type="text/javascript" src="include/js/jquery.js"></script>
-	<script type="text/javascript" src="include/js/funciones_menu.js"></script>
+	<!--<script type="text/javascript" src="include/js/jquery.js"></script>-->
+	<script type="text/javascript" src="include/js/funciones_contactos.js"></script>
 	<link rel="stylesheet" href="include/estilos_entrada.css">
 </head>
 <body>
@@ -79,6 +79,7 @@ require_once('login/conexion.php');?>
 			Módulo de radicación de entrada
 			<br>
 			<img src="imagenes/jonasLogo.png" width="200" alt="Jonas SGD" title="Logo Jonas	">
+			
 		</div>
 	<!--	<div>
 			<form action="" method="post" name="formulario_contactos" id="formulario_contactos">

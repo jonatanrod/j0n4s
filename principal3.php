@@ -96,7 +96,7 @@
 		<!--Inicio del contenido de principal2.php-->
 
 
-<!-- Inicio prueba de acordeon-->	
+<!-- Inicio prueba de acordeon	
 <div id="container-main">
     <h1>Mejores Jugadores Liga BBVA</h1>
  
@@ -120,7 +120,7 @@
         </div>
     </div>
 </div>
-<!-- Fin prueba de acordeon-->	
+ Fin prueba de acordeon-->	
 		<div id="contenido">
 			Contenido
 		</div>

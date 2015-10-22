@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script type="text/javascript" src="include/js/jquery.js"></script>
-	<script type="text/javascript" src="include/js/funciones_menu.js"></script>
+	<!--<script type="text/javascript" src="include/js/jquery.js"></script>-->
+	<script type="text/javascript" src="include/js/funciones_contactos.js"></script>
 </head>
 <body>
 	<?php 
