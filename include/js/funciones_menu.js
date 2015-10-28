@@ -53,7 +53,7 @@ function main(){
 		/*Carga el administrador de municipios*/
 		$(function carga_administrador_municipios() {
 			$("#admin_municipios").click(function carga_administrador_municipios(){
-				$("#contenido").load("/admin_muni/index_municipios.php");
+				$("#contenido").load("admin_muni/index_municipios.php");
 				
 				$('.menu_superior').animate({
 						left:'-100%'
@@ -65,7 +65,7 @@ function main(){
 		/*Carga el creador de contactos*/
 		$(function carga_creador_contactos() {
 			$("#radicacion_entrada").click(function carga_creador_contactos(){
-				$("#contenido").load("entrada.php");/*toca cambiar al terminar el 
+				$("#contenido").load("index_entrada.php");/*toca cambiar al terminar el 
 				modulo ya que no puede quedar en el directorio raiz*/	
 
 				$('.menu_lat').animate({

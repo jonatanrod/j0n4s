@@ -6,6 +6,7 @@
 	<link rel="shortcut icon" href="../imagenes/jonas.png">
 	<title>Jonas Principal</title>
 <!--Esta es el href a los archivos que necesito para usar jquery, css-->
+	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type ="text/css">
 	<link rel="stylesheet" href="include/iconos/fonts/style.css">
 	<!--<link rel="stylesheet" href="include/estilos.css"> -->
 	<link rel="stylesheet" href="include/estilos3.css">
@@ -18,7 +19,7 @@
 	<div id="contenedor_general">
 <!--Inicio del encabezado de principal3.php-->		
 		<div id="encabezado">
-			<div class="logo">JonasSGD</div>
+			<div class="logo">Jonas SGD</div>
 			<div class="boton_menu">
 				<a href="#" class="bt-menu"><span class ="icon-menu"> Menu</span></a>
 			</div>
@@ -44,8 +45,8 @@
 					<li class="submenu">
 						<a href="#"><span class="icon-user"></span></a>
 						<ul class="children">
-							<li><span class="icon-child"> Modificar Datos de Usuario</span>	</li>
-							<li><span class="icon-circle-with-cross"> Cerrar Sesión</span></li>
+							<li><a href="#"><span class="icon-child"><span class="titulo_submenu"> Modificar Datos de Usuario</span></span></a></li>
+							<li><a href="#"><span class="icon-circle-with-cross"><span class="titulo_submenu"> Cerrar Sesión</span></span></a></li>
 						</ul>
 					</li>
 				</ul>
@@ -58,36 +59,36 @@
 				<nav class="menu_lat">
 						<ul>
 							<li class="submenu">
-								<a href="#"><span class="icon-file-empty"> Radicación <span class="caret icon-circle-down"></span></span></a>
+								<a href="#"><span class="icon-file-empty"><span class="titulo_submenu"> Radicación </span><span class="caret icon-circle-down"></span></span></a>
 								<ul class="children">
-									<li id="radicacion_entrada"><span class="icon-sign-in"></span> Radicación de Entrada<a href="#"></a></li>
-									<li><span class="icon-sign-out"></span> Radicación de Salida<a href="#"></a></li>
-									<li><span class="icon-cycle"></span> Radicación Interna<a href="#"></a></li>
-									<li><span class="icon-add-to-list"></span> Radicación Masiva<a href="#"></a></li>
+									<li id="radicacion_entrada"><a href="#"><span class="icon-sign-in"></span> Radicación de Entrada</a></li>
+									<li><a href="#"><span class="icon-sign-out"></span> Radicación de Salida</a></li>
+									<li><a href="#"><span class="icon-cycle"></span> Radicación Interna</a></li>
+									<li><a href="#"><span class="icon-add-to-list"></span> Radicación Masiva</a></li>
 								</ul>
 							</li>
 							<li class="submenu">
-								<a href="#"><span class="icon-link"> Asociar Imagen<span class="caret icon-circle-down"></span></span></a>
+								<a href="#"><span class="icon-link"><span class="titulo_submenu"> Asociar Imagen</span><span class="caret icon-circle-down"></span></span></a>
 								<ul class="children">
-									<li><span class="icon-file-settings"> Imagen Principal</span><a href="#"></a></li>
-									<li><span class="icon-file-add"> Asociar Imagen Como Anexo</span><a href="#"></a></li>
+									<li><a href="#"><span class="icon-file-settings"> Imagen Principal</span></a></li>
+									<li><a href="#"><span class="icon-file-add"><span class="titulo_submenu"> Asociar Imagen Como Anexo</span></span></a></li>
 								</ul>
 							</li>
 							<li class="submenu">
-								<a href="#"><span class="icon-email"> Envíos<span class="caret icon-circle-down"></span></span></a>
+								<a href="#"><span class="icon-email"><span class="titulo_submenu"> Envíos</span><span class="caret icon-circle-down"></span></span></a>
 								<ul class="children">
-									<li><span class="icon-envelope"> Envío de Correo</span><a href="#"></a></li>
-									<li><span class="icon-email2"> Devoluciones de Correo</span><a href="#"></a></li>
-									<li><span class="icon-clipboard"> Impresión de Plantillas</span><a href="#"></a></li>
+									<li><a href="#"><span class="icon-envelope"><span class="titulo_submenu"> Envío de Correo</span></span></a></li>
+									<li><a href="#"><span class="icon-email2"><span class="titulo_submenu"> Devoluciones de Correo</span></span></a></li>
+									<li><a href="#"><span class="icon-clipboard"><span class="titulo_submenu"> Impresión de Plantillas</span></span></a></li>
 								</ul>
 							</li>
-							<li><a href="#"><span class="icon-new-message"> Modificación</span></a></li>
+							<li><a href="#"><span class="icon-new-message"><span class="titulo_submenu"> Modificación</span></span></a></li>
 						</ul>
 					<div class="bandejas">		
 						<ul>
-							<li><a href="#"><span class="icon-align-left"> Bandeja de Entrada</span></a></li>
-							<li><a href="#"><span class="icon-align-right"> Bandeja de Salida</span></a></li>
-							<li><a href="#"><span class="icon-info"> Documentos Informados</span></a></li>
+							<li><a href="#"><span class="icon-align-left"><span class="titulo_submenu"> Bandeja de Entrada</span></span></a></li>
+							<li><a href="#"><span class="icon-align-right"><span class="titulo_submenu"> Bandeja de Salida</span></span></a></li>
+							<li><a href="#"><span class="icon-info"><span class="titulo_submenu"> Documentos Informados</span></span></a></li>
 						</ul>
 					</div>
 				</nav>

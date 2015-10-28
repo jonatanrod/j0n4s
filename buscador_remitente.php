@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<!--<script type="text/javascript" src="include/js/jquery.js"></script>-->
-	<script type="text/javascript" src="include/js/funciones_contactos.js"></script>
+		<meta charset="UTF-8">
+		<title>Buscador de remitente</title>
 </head>
 <body>
 	<?php 
-		require_once('login/conexion.php');
+		require_once('login/conexion.php');//cambiar por ../login/conexion.php
 		$busca_contactos ='';
-		if(isset($_POST['busca_contactos'])){
-			$busca_contactos = $_POST['busca_contactos'];
+		if(isset($_POST['search'])){
+			$busca_contactos = $_POST['search'];
 		}
 
 		$consulta = "SELECT * FROM contactos WHERE UPPER(nombre_contacto)
@@ -25,19 +22,47 @@
 				do{
 					for ($i=0;$i<$registros;$i++){
 						$linea = pg_fetch_array($fila);
-						echo "<div class='resultado_municipio' id='resultado_municipio'>";
-						/*Aqui defino cuál va a ser el comportamiento al dar click sobre el 
-						resultado obtenido*/
+
+						$nombre_contacto = $linea['nombre_contacto'];
+						$nit_contacto = $linea['nit_contacto'];
+						$ubicacion_contacto = $linea['ubicacion_contacto'];
+						$direccion_contacto = $linea['direccion_contacto'];
+						$telefono_contacto = $linea['telefono_contacto'];
+						$mail_contacto = $linea['mail_contacto'];
+						$representante_legal = $linea['representante_legal'];
+						$creador_contacto = $linea['creador_contacto'];
+						$codigo_contacto = $linea['codigo_contacto'];
+
+					echo "<div class='art'>"
+						/*Aqui defino cuál va a ser el comportamiento al dar clic sobre el 
+						resultado obtenido desde el "a href"*/;
+
+					echo "<a href=\"javascript:cargar_formulario_radicacion_entrada('$nombre_contacto','$nit_contacto','$ubicacion_contacto','$direccion_contacto','$telefono_contacto','$mail_contacto','$representante_legal', '$codigo_contacto')\">";?>
 							
-							echo $linea['nombre_contacto']." (".$linea['nit_contacto'].") ";
-							/*Etiqueta span para que el nombre del pais y continente tenga otro formato*/
-							echo "<span>".$linea['ubicacion_contacto']." - ".$linea['direccion_contacto']."
-							</span>";
-							/*Fin etiqueta span para que el nombre del pais y continente tenga otro formato*/
-						echo "</div>";//cierra div class='resultado_municipio'
+
+					<?php echo'	<span class="titulo"><strong>'
+									.$nombre_contacto.'</strong>'." (".
+								 	$nit_contacto.") ".
+								"</span>";
+						/*Etiqueta span para que el nombre del pais y continente tenga otro formato*/
+							echo'<br/><span class="subtitulo">'
+									.$ubicacion_contacto." / ".
+									 $direccion_contacto." / Telefono : ".
+									 $telefono_contacto." / ".
+									 $mail_contacto."<br/>".
+						/*Funcion php para traducir la fecha (January->Enero)*/
+									 "Creado el "; setlocale(LC_TIME, "es_CO.UTF-8");
+									 echo strftime("%A %d de %B del %Y");$linea['fecha_creacion'];
+ 						/*Fin funcion php para traducir la fecha (January->Enero)*/
+									 echo " por ". $creador_contacto.
+								"</span>";
+						/*Fin etiqueta span para que el nombre del pais y continente tenga otro formato*/
+						echo "</a>";
+						/*Hasta aqui debe ir la etiqueta "a href" para que cuando haga clic*/
+						echo "</div>";//cierra div class='resultado_municipio'(art)
 					//	$municipio_recibido = $linea['nombre_municipio'];
 					}
-				}while ($fila=pg_fetch_assoc($registros));
+				}while ($fila=pg_fetch_assoc($fila));
 			}elseif($registros>0 && $busca_contactos==''){
 				echo "<div> Ingresa un parámetro de búsqueda<div>";
 			}else{
@@ -47,8 +72,8 @@
 	/*Fin recorre el array generado e imprime uno a uno los resultados.*/	
 	
 	/* Isset de las variables que van a usarse en la consulta*/	
-		if(isset($_POST['pais'])){
-			$pais = strtoupper($_POST['pais']);
+		if(isset($_POST['nombre'])){
+			$nombre_contacto = strtoupper($_POST['pais']);
 		}
 		if(isset($_POST['departamento'])){
 			$departamento = strtoupper($_POST['departamento']);

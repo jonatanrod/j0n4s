@@ -31,7 +31,7 @@ body{
 	background-color: #F1F1F1;
 	padding: 5px;
 	border-bottom: 1px solid rgba(255,255,255,.5);
-	
+	border-radius: 10px;
 }
 .art a{
 	text-decoration: none;
@@ -39,6 +39,10 @@ body{
 }
 .art span{
 	font-size: 10px;
+}
+.art:hover{
+	box-shadow: 10000px 0 #2D9DC6 inset;
+	color: #FFFFFF;
 }
 .ver_creador{
 	font-size: 11px;
@@ -81,6 +85,13 @@ body{
 .ventana .form table{
 	text-align: left;
 	width: 350px;
+}
+#bEnviar{
+	border-radius: 10px;
+}
+#bEnviar:hover{
+	background-color: #2D9DC6;
+	color: #FFFFFF;
 }
 /*Se inicia estilos al form cuando es movil o ventana menos de 768px
  de principal3.php*/			

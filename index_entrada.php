@@ -6,8 +6,8 @@ require_once('login/conexion.php');?>
 <head>
 	<meta charset="UTF-8">
 	<title>Buscador de Remitente</title>
-	<!--<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type ="text/css">-->
-	<!--<script type="text/javascript" src="include/js/jquery.js"></script>-->
+	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type ="text/css">
+	<script type="text/javascript" src="include/js/jquery.js"></script>
 	<script type="text/javascript" src="include/js/funciones_contactos.js"></script>
 	<link rel="stylesheet" href="include/estilos_entrada.css">
 </head>
@@ -17,7 +17,8 @@ require_once('login/conexion.php');?>
 		<div class="agregar_contacto"><!-- ventana-->
 			<div class="formulario_agregar_contactos">
 				<div class="cerrar"><a href='javascript:cerrarVentanaAgregarContacto();'>Cerrar X</a></div>
-				<h1>Formulario Agregar Nuevo Contacto</h1>
+				<p class="titulo">Formulario Agregar Nuevo Contacto
+				<br/><span class="subtitulo">(Entidad - Empresa - Persona Natural)</span></p>
 				<hr>
 				<form id ="form_datos_contacto" action="">
 					<table border ="0">
@@ -37,9 +38,9 @@ require_once('login/conexion.php');?>
 							<td>Ubicación Contacto :</td>
 							<td>
 								<form action="" method="post" name="ubicacion_contacto" id="ubicacion_contacto">
-									<input type="text" placeholder="AMERICA-COLOMBIA-BOGOTA-BOGOTA,D.C." id="busca_contactos" >
+									<input type="text" placeholder="AMERICA-COLOMBIA-BOGOTA-BOGOTA,D.C." id="geolocalizacion_contacto" >
 								</form>
-								<div id="resultados"></div>
+								<div id="result"></div>
 								<div id="error_departamento" class="errores">La ubicación geográfica del contacto es obligatoria</div>
 							</td>
 						</tr>
@@ -75,22 +76,23 @@ require_once('login/conexion.php');?>
 			</div>
 		</div>
 <!--Hasta aqui el div que contiene el formulario para agregar contacto-->
+<!--Desde aqui los div que se muestran por default al cargar index_entrada.php-->
 		<div class="center" id="logo">
 			Módulo de radicación de entrada
 			<br>
-			<img src="imagenes/jonasLogo.png" width="200" alt="Jonas SGD" title="Logo Jonas	">
-			
+			<img src="imagenes/jonasLogo.png" width="200" alt="Jonas SGD" title="Logo Jonas	">	
 		</div>
-	<!--	<div>
-			<form action="" method="post" name="formulario_contactos" id="formulario_contactos">
-				Remitente : <input type="text" id="busca_contactos">
+		<div class="form center">
+			<form action="" method="post" name="search_form" id="search_form">
+				Remitente : <input type="text" name ="search" id="search">
 			</form>
 		</div>
-		<div id="resultados"></div> -->
+		<div id="resultados"></div><br/> 
 		<div class="footer center">
 			Copyright 2015 - Reservados todos los derechos <br>
 			<a href="http://www.google.com.co">www.jonas.com.co</a>
 		</div>
+<!--Hasta aqui los div que se muestran por default al cargar index_entrada.php-->		
 	</div>
 
 </body>

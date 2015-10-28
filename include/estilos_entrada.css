@@ -1,3 +1,12 @@
+/*Estilos para la pagina en general*/
+*{
+	padding: 0;
+	margin: 0:
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	font-family: "Roboto Condensed", sans-serif;
+}
 body{
 	color: #666;
 	background-color: #F0F0F0; 
@@ -7,15 +16,26 @@ body{
 	width:100%;
 	min-height: 300px;
 	margin: auto;
-	padding: 20px;
+	padding: 5px;
 	background-color: #FFFFFF;
 	border: solid 3px #CCC;
 }
 .center{
 	text-align: center;
 }
-.formulario_agregar_contactos input{
-	width: 80%;
+#titulo_radicacion{
+	font-size: 25px;
+}
+#atras{
+	font-weight: 900;
+	text-align: right;
+}
+#logo{
+	text-align: top;
+
+}
+.form input{
+	width: 60%;
 	padding: 6px;
 }
 .footer{
@@ -26,20 +46,24 @@ body{
 #resultados{
 	width: auto;
 }
-.resultado_municipio{
+.art{
 	margin-bottom: 2px;
 	background-color: #F1F1F1;
 	padding: 5px;
 	border-bottom: 1px solid rgba(255,255,255,.5);
 	display: block;
+	width: 100%;
+	border-radius: 10px;
 }
-.resultado_municipio a{
+.art a{
 	text-decoration: none;
 	display: block;	
 }
-.resultado_municipio span{
-	font-size: 10px;
+.art:hover{
+	box-shadow: 10000px 0 #2D9DC6 inset;
+	color: #FFFFFF;
 }
+
 .ver_creador{
 	font-size: 11px;
 	float: auto;
@@ -58,7 +82,7 @@ body{
 .agregar_contacto .formulario_agregar_contactos{
 	width: auto;
 	height: auto;
-	padding: 15px;
+	padding: 5px;
 	background-color: #FFFFFF;
 	color: #666;
 	top: 50%;
@@ -83,8 +107,69 @@ body{
 	width: auto;
 	height: auto;
 }
+.titulo{
+	font-size: 18px;
+}
+.subtitulo{
+	font-size: 12px;
+}
+.contenido{
+	font-size: 15px;
+	text-align: left;
+}
+.formulario_entrada{
+	width:100%;
+	margin: auto;
+	padding: 5px;
+	background-color: #FFFFFF;
+	border: solid 3px #CCC;
+}
+.ventana{
+	width: 100%;
+	height: 100%;
+	color: #FFFFFF;
+	position: fixed;
+	background-image: url(../imagenes/bg-modal.png);
+	top: 0;
+	left: 0;
+	display: block;
+}
+.ventana .form{
+	width: 95%;
+	height: 480px;
+	padding: 25px;
+	background-color: #FFFFFF;
+	color: #666;
+	top: 5%;
+	left: 3%;
+	position: absolute;
+
+	text-align: center;
+}
+.ventana .form h1{
+	font-size: 20px;
+}
+.ventana .form table{
+	padding-left: 50px;
+	text-align: left;
+	width: 90%;
+}
+.celda{
+	width: 75%
+}
+.celda input{
+	width: 100%;
+}
+#bEnviar{
+	border-radius: 10px;
+
+}
+#bEnviar:hover{
+	background-color: #2D9DC6;
+	color: #FFFFFF;
+}
 /*Se inicia estilos al form cuando es movil o agregar_contacto menos de 768px
- de principal3.php*/			
+ de idex_entrada.php*/			
 @media screen and (max-width: 768px){
 	.agregar_contacto{
 	width: 100%;
@@ -97,6 +182,8 @@ body{
 	display: none;
 	}
 }
+/*Se inicia estilos al form cuando es movil o agregar_contacto menos de 768px
+ de idex_entrada.php*/
 .errores{
 	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.3);
 	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.3);
