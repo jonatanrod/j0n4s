@@ -8,6 +8,8 @@
 	<?php 
 		require_once('../login/conexion.php');
 		sleep(1);
+		$permiso_administrador_municipios = 1;/*Falta por definir el permiso en usuarios
+		Lo pongo temporalmente 1 pero hay que definirlo.*/
 		$search ='';
 		if(isset($_POST['search'])){
 			$search = $_POST['search'];
@@ -21,7 +23,6 @@
 	/*Recorre el array generado e imprime uno a uno los resultados.*/	
 
 			if($registros>0 && $search!=''){
-				echo "<h2>Resultados de la búsqueda</h2>";
 				do{
 					for ($i=0;$i<$registros;$i++){
 						$linea = pg_fetch_array($fila);
@@ -40,11 +41,31 @@
 
 					}
 				}while ($fila=pg_fetch_assoc($fila));
-			}elseif($registros>0 && $search==''){
-				echo "<h2> Ingresa un parámetro de búsqueda</h2>";
+			}elseif($search===''){
+				if($permiso_administrador_municipios==1){
+					echo " Ingresa un parámetro de búsqueda";
+				}else{
+						
+
+
+
+
+
+
+
+
+
+
+					echo"<script>$('#error_ubicacion_contacto').fadeOut();</script>";
+				}
 			}else{
-				echo "<h2> No se han encontrado resultados</h2><p>Si desea ingresar un nuevo municipio haga click 
-				<a href='javascript:abrirVentanaCrearMunicipios();'>aqui</a></p>";
+				if($permiso_administrador_municipios==1){
+					echo "<h2> No se han encontrado resultados</h2><p>Si desea ingresar un nuevo municipio haga click 
+					<a href='javascript:abrirVentanaCrearMunicipios();'>aqui</a></p>";
+				}else{
+					echo"<script>$('#error_ubicacion_contacto').fadeIn();</script>";
+				}
+				
 			}
 
 /*switch para asignar el codigo del continente requerido en la base de datos*/

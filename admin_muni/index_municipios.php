@@ -5,9 +5,9 @@
 	<meta charset="UTF-8">
 	<title>Buscador de Municipios</title>
 	<!--<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type ="text/css">-->
-	<!--<script type="text/javascript" src="include/js/jquery.js"></script>-->
-	<script type="text/javascript" src="include/js/funciones_municipios.js"></script>
-	<link rel="stylesheet" href="include/estilos_municipios.css">
+	<script type="text/javascript" src="../include/js/jquery.js"></script>
+	<script type="text/javascript" src="../include/js/funciones_municipios.js"></script>
+	<link rel="stylesheet" href="../include/estilos_municipios.css">
 </head>
 <body>
 <!--Desde aqui el div que contiene el formulario para agregar municipios-->
@@ -61,7 +61,7 @@
 		<div class="center" id="logo">
 			Configuración Paises, Departamentos y Municipios
 			<br>
-			<img src="imagenes/jonasLogo.png" width="200" alt="Jonas SGD" title="Logo Jonas	">
+			<img src="../imagenes/jonasLogo.png" width="200" alt="Jonas SGD" title="Logo Jonas	">
 		</div>
 		<div class="form center">
 			<form action="" method="post" name="search_form" id="search_form">

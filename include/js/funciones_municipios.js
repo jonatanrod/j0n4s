@@ -1,4 +1,3 @@
-
 /*Script para buscador del administrador de municipios*/
 $(function administrador_buscador_municipios(){
 	$('#search').focus();
@@ -8,11 +7,11 @@ $(function administrador_buscador_municipios(){
 	$('#search').keyup(function administrador_buscador_municipios(){
 		var envio = $('#search').val();
 		$('#logo').html('<h2>Buscador de Municipios</h2>');
-		$('#resultados').html('<h2><img src="imagenes/loading.gif" alt="" /></h2>');
+		$('#resultados').html('<h2><img src="../imagenes/loading.gif" alt="" /></h2>');
 
 		$.ajax({
 			type: 'POST',
-			url: 'admin_muni/buscador_municipios.php',
+			url: '../admin_muni/buscador_municipios.php',
 			data: ('search='+envio),
 			success: function(resp){
 				if(resp!=""){
@@ -23,14 +22,13 @@ $(function administrador_buscador_municipios(){
 	})
 })
 /*Fin script para buscador del administrador de municipios*/
-
 /*Funciones para desplegar ventana modal municipios*/
 function abrirVentanaCrearMunicipios(){
 	$(".ventana").slideDown("slow");
 }
 function cerrarVentanaCrearMunicipios(){
 	$(".ventana").slideUp("slow");
-	$("#contenido").load("admin_muni/index_municipios.php");
+//	$("#contenido").load("admin_muni/index_municipios.php");
 }
 /*Fin funciones para desplegar ventana modal municipios*/
 
@@ -47,7 +45,6 @@ $(document).ready(function validar_varios_municipio(){
 			return false;
 		}else{
 			$("#error_pais").fadeOut();
-		
 			if(departamento== ""){
 				$("#error_departamento").fadeIn();
 				return false;

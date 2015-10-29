@@ -46,6 +46,9 @@ body{
 #resultados{
 	width: auto;
 }
+#resultado{
+	width: auto;
+}
 .art{
 	margin-bottom: 2px;
 	background-color: #F1F1F1;
@@ -77,23 +80,18 @@ body{
 	background-image: url(../imagenes/bg-modal.png);
 	top: 0;
 	left: 0;
-	display: none;
+	display: block;
 }
 .agregar_contacto .formulario_agregar_contactos{
-	width: auto;
-	height: auto;
-	padding: 5px;
+	width: 95%;
+	height: 500px;
+	padding: 25px;
 	background-color: #FFFFFF;
 	color: #666;
-	top: 50%;
-	left: 50%;
+	top: 5%;
+	left: 3%;
 	position: absolute;
-	margin-left: -35%;
-	margin-top: -20%;
 	text-align: center;
-}
-.agregar_contacto .formulario_agregar_contactos h1{
-	font-size: 20px;
 }
 .cerrar{
 	font-weight: 900;
@@ -102,10 +100,10 @@ body{
 .cerrar a{
 	color: red;
 }
-.agregar_contacto .formulario_agregar_contactos table{
+.agregar_contacto .formulario_agregar_contactos table{	
+	padding-left: 50px;
 	text-align: left;
-	width: auto;
-	height: auto;
+	width: 90%;
 }
 .titulo{
 	font-size: 18px;
@@ -132,7 +130,7 @@ body{
 	background-image: url(../imagenes/bg-modal.png);
 	top: 0;
 	left: 0;
-	display: block;
+	display: none;
 }
 .ventana .form{
 	width: 95%;
@@ -143,28 +141,23 @@ body{
 	top: 5%;
 	left: 3%;
 	position: absolute;
-
 	text-align: center;
-}
-.ventana .form h1{
-	font-size: 20px;
 }
 .ventana .form table{
 	padding-left: 50px;
-	text-align: left;
+	text-align: right;
 	width: 90%;
 }
 .celda{
 	width: 75%
 }
 .celda input{
-	width: 100%;
+	width: 80%;
 }
-#bEnviar{
+#enviar_modificacion{
 	border-radius: 10px;
-
 }
-#bEnviar:hover{
+#enviar_modificacion:hover{
 	background-color: #2D9DC6;
 	color: #FFFFFF;
 }

@@ -43,10 +43,121 @@ function cargar_formulario_radicacion_entrada(nombre_contacto,nit_contacto,ubica
 {
 	$('#contenido').load('entrada.php',{var1:nombre_contacto, var2:nit_contacto, var3:ubicacion_contacto, var4:direccion_contacto, var5:telefono_contacto, var6:mail_contacto, var7:representante_legal, var8:codigo_contacto})
 }
+/*Fin funciones para cargar datos en formulario nuevo contacto*/
+/*Funcion para volver atras en radicacion entrada*/
 function atras(){
 	$('#contenido').load('index_entrada.php')
 }
-/*Fin funciones para cargar datos en formulario nuevo contacto*/
-/*Funcion para volver atras en radicacion entrada*/
-
 /*Fin funcion para volver atras en radicacion entrada*/
+
+/*Validación que los campos de nombre, identificacoin, ubicacion y direccion 
+no estén vacíos para modificar datos del remitente.*/
+$(document).ready(function(){
+	grabar_contacto();
+	enviar_modificacion_contacto();
+})
+function grabar_contacto(){
+	$("#grabar_contacto").click(function grabar_contacto(){
+		var nombre_contacto = $('#nombre_contacto').val()
+		var nit_contacto = $('#nit_contacto').val()
+		var ubicacion_contacto =$('#ubicacion_contacto').val()
+		var direccion_contacto =$('#direccion_contacto').val()
+
+		var tamano_ubicacion = ubicacion_contacto.length;
+
+
+		if(nombre_contacto== ""){
+			$("#error_nombre_contacto").fadeIn();
+			return false;
+		}else{
+			$("#error_nombre_contacto").fadeOut();
+			if(nit_contacto==""){
+				$("#error_nit_contacto").fadeIn();
+				return false;
+			}else{
+				$("#error_nit_contacto").fadeOut();
+				if(ubicacion_contacto==""){
+					$("#error_nit_contacto").fadeOut();
+					var ubicacion_contacto = "BOGOTA"
+					alert(ubicacion_contacto);
+					return false;
+								
+				}else if(tamaño_ubicacion>0 && tamano_ubicacion<10){
+					alert(tamano_ubicacion);
+					return false;
+				}else{
+					$('#error_ubicacion_contacto').fadeOut();
+					if(direccion_contacto==""){
+						$("#error_direccion").fadeOut();
+						return false;
+					}else{
+						$("#error_nit_contacto").fadeOut();
+					}
+				}
+			}
+		} 
+	})
+}	
+function enviar_modificacion_contacto(){
+	$("#enviar_modificacion_contacto").click(function enviar_modificacion_contacto(){
+		var nombre_contacto = $('#nombre_contacto').val()
+		var nit_contacto = $('#nit_contacto').val()
+		var ubicacion_contacto =$('#ubicacion_contacto').val()
+		var direccion_contacto =$('#direccion_contacto').val()
+
+		if(nombre_contacto== ""){
+			$("#error_nombre_contacto").fadeIn();
+			return false;
+		}else{
+			$("#error_nombre_contacto").fadeOut();
+			if(nit_contacto==""){
+				$("#error_nit_contacto").fadeIn();
+				return false;
+			}else{
+				$("#error_nit_contacto").fadeOut();
+				if(ubicacion_contacto==""){
+					$('#error_ubicacion_contacto').fadeIn();
+						var ubicacion_contacto = "BOGOTA"
+						alert(ubicacion_contacto);
+
+					//Aqui debo corregir el comportamiento
+					// de la validación geográfica del contacto. Siempre tiene un valor, 
+					//entonces hay que definir un comportamiento particular
+					
+				}else{
+					buscador_municipios_para_contacto();
+					$('#error_ubicacion_contacto').fadeOut();
+					if(direccion_contacto==""){
+						$("#error_direccion_contacto").fadeIn();
+						return false;
+					}else{
+						$("#error_direccion_contacto").fadeOut();
+					}
+				}
+			}
+		} 
+	})
+}
+/*Script para buscador de municipios en Formulario Agregar Contacto*/
+$(function buscador_municipios_para_contacto(){
+	$('#ubicacion_contacto').submit(function buscador_municipios_para_contacto(h){
+		h.preventDefault();
+	})
+	$('#ubicacion_contacto').keyup(function buscador_municipios_para_contacto(){
+		var envio = $('#ubicacion_contacto').val();
+		$('#logo').html('<h2>Buscador de Municipios</h2>');
+		$('#resultados').html('<h2><img src="../imagenes/loading.gif" alt="" /></h2>');
+
+		$.ajax({
+			type: 'POST',
+			url: '../admin_muni/buscador_municipios.php',
+			data: ('search='+envio),
+			success: function(resp){
+				if(resp!=""){
+					$('#resultado').html(resp);
+				}
+			}
+		})
+	})
+})
+/*Fin script para buscador de municipios en Formulario Agregar Contacto*/
