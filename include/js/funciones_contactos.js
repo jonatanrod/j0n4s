@@ -1,19 +1,19 @@
 /*Script para buscador contactos*/
 $(function(){
-	$('#search').focus();
-	$('#search_form').submit(function(e){
+	$('#search_remitente').focus();
+	$('#formulario_remitente_radicacion_entrada').submit(function(e){
 		e.preventDefault();
 	});
-	$('#search').keyup(function(){
-		var envio2 = $('#search').val();
+	$('#search_remitente').keyup(function(){
+		var envio2 = $('#search_remitente').val();
 
 		$('#logo').html('<h2>Radicación de Entrada</h2>');
-		$('#resultados').html('<img src="imagenes/loading.gif" alt="" />');
+		$('#resultados').html('<img src="../imagenes/loading.gif" alt="" />');
 
 		$.ajax({
 			type: 'POST',
-			url:  'buscador_remitente.php',
-			data: ('search='+envio2),
+			url:  'radicacion_entrada/buscador_remitente.php',
+			data: ('search_remitente='+envio2),
 			success: function(resp){
 				if(resp!=""){
 					$('#resultados').html(resp);
@@ -29,7 +29,7 @@ function abrirVentanaAgregarContacto(){
 }
 function cerrarVentanaAgregarContacto(){
 	$(".agregar_contacto").slideUp("slow");
-	$("#contenido").load("index_entrada.php");
+	$("#contenido").load("../radicacion_entrada/index_entrada.php");
 }
 function abrir_ventana_modifica_remitente(){
 	$(".ventana").slideDown("slow");
@@ -37,16 +37,19 @@ function abrir_ventana_modifica_remitente(){
 function cerrar_ventana_modifica_remitente(){
 	$(".ventana").slideUp("slow");
 }
+function cerrar_ventana_form_agregar_municipios(){
+	$(".ventana").slideUp("slow");//Falta definir que hace despues de subir la ventana. (autocomplete del campo)
+}
 /*Fin funciones para desplegar ventana modal contacto*/
 /*Funciones para cargar datos en formulario nuevo contacto*/
 function cargar_formulario_radicacion_entrada(nombre_contacto,nit_contacto,ubicacion_contacto,direccion_contacto,telefono_contacto,mail_contacto,representante_legal,codigo_contacto)
 {
-	$('#contenido').load('entrada.php',{var1:nombre_contacto, var2:nit_contacto, var3:ubicacion_contacto, var4:direccion_contacto, var5:telefono_contacto, var6:mail_contacto, var7:representante_legal, var8:codigo_contacto})
+	$('#contenido').load('radicacion_entrada/entrada.php',{var1:nombre_contacto, var2:nit_contacto, var3:ubicacion_contacto, var4:direccion_contacto, var5:telefono_contacto, var6:mail_contacto, var7:representante_legal, var8:codigo_contacto})
 }
 /*Fin funciones para cargar datos en formulario nuevo contacto*/
 /*Funcion para volver atras en radicacion entrada*/
 function atras(){
-	$('#contenido').load('index_entrada.php')
+	$('#contenido').load('radicacion_entrada/index_entrada.php')
 }
 /*Fin funcion para volver atras en radicacion entrada*/
 
@@ -78,7 +81,7 @@ function grabar_contacto(){
 				$("#error_nit_contacto").fadeOut();
 				if(ubicacion_contacto==""){
 					$("#error_nit_contacto").fadeOut();
-					var ubicacion_contacto = "BOGOTA"
+					var ubicacion_contacto = "BOGOTA";
 					alert(ubicacion_contacto);
 					return false;
 								
@@ -125,14 +128,16 @@ function enviar_modificacion_contacto(){
 					//entonces hay que definir un comportamiento particular
 					
 				}else{
-					buscador_municipios_para_contacto();
-					$('#error_ubicacion_contacto').fadeOut();
 					if(direccion_contacto==""){
 						$("#error_direccion_contacto").fadeIn();
 						return false;
 					}else{
 						$("#error_direccion_contacto").fadeOut();
 					}
+
+					buscador_municipios_para_contacto();
+					$('#error_ubicacion_contacto').fadeOut();
+					
 				}
 			}
 		} 

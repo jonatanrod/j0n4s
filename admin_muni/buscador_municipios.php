@@ -10,6 +10,8 @@
 		sleep(1);
 		$permiso_administrador_municipios = 1;/*Falta por definir el permiso en usuarios
 		Lo pongo temporalmente 1 pero hay que definirlo.*/
+		$formulario_nuevo_contacto = 1; /*Falta por definir como lo traigo desde el formulario
+		de agregar contacto */
 		$search ='';
 		if(isset($_POST['search'])){
 			$search = $_POST['search'];
@@ -43,19 +45,10 @@
 				}while ($fila=pg_fetch_assoc($fila));
 			}elseif($search===''){
 				if($permiso_administrador_municipios==1){
-					echo " Ingresa un parámetro de búsqueda";
+					if($formulario_nuevo_contacto !=1){
+						echo " Ingresa un parámetro de búsqueda";
+					}		
 				}else{
-						
-
-
-
-
-
-
-
-
-
-
 					echo"<script>$('#error_ubicacion_contacto').fadeOut();</script>";
 				}
 			}else{

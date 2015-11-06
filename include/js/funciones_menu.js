@@ -65,7 +65,7 @@ function main(){
 		/*Carga el creador de contactos*/
 		$(function carga_creador_contactos() {
 			$("#radicacion_entrada").click(function carga_creador_contactos(){
-				$("#contenido").load("index_entrada.php");/*toca cambiar al terminar el 
+				$("#contenido").load("radicacion_entrada/index_entrada.php");/*toca cambiar al terminar el 
 				modulo ya que no puede quedar en el directorio raiz*/	
 
 				$('.menu_lat').animate({

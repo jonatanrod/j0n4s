@@ -11,7 +11,7 @@ $(function administrador_buscador_municipios(){
 
 		$.ajax({
 			type: 'POST',
-			url: '../admin_muni/buscador_municipios.php',
+			url: 'admin_muni/buscador_municipios.php',
 			data: ('search='+envio),
 			success: function(resp){
 				if(resp!=""){
