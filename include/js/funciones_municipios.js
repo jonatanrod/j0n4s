@@ -7,7 +7,7 @@ $(function administrador_buscador_municipios(){
 	$('#search').keyup(function administrador_buscador_municipios(){
 		var envio = $('#search').val();
 		$('#logo').html('<h2>Buscador de Municipios</h2>');
-		$('#resultados').html('<h2><img src="../imagenes/loading.gif" alt="" /></h2>');
+		$('#desplegable_resultados').html('<h2><img src="imagenes/loading.gif" alt="" /></h2>');
 
 		$.ajax({
 			type: 'POST',
@@ -15,7 +15,7 @@ $(function administrador_buscador_municipios(){
 			data: ('search='+envio),
 			success: function(resp){
 				if(resp!=""){
-					$('#resultados').html(resp);
+					$('#desplegable_resultados').html(resp);
 				}
 			}
 		})

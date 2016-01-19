@@ -50,30 +50,24 @@ function main(){
 /*Fin funcion para botones responsive del menu y menu_lateral*/
 
 	/*Funcion para que al dar clic cargue el div #contenido*/
-		/*Carga el administrador de municipios*/
-		$(function carga_administrador_municipios() {
-			$("#admin_municipios").click(function carga_administrador_municipios(){
-				$("#contenido").load("admin_muni/index_municipios.php");
-				
-				$('.menu_superior').animate({
-						left:'-100%'
-				});
-				//main()
-			});
-		});
-		/*Fin carga el administrador de municipios*/
-		/*Carga el creador de contactos*/
-		$(function carga_creador_contactos() {
-			$("#radicacion_entrada").click(function carga_creador_contactos(){
-				$("#contenido").load("radicacion_entrada/index_entrada.php");/*toca cambiar al terminar el 
-				modulo ya que no puede quedar en el directorio raiz*/	
-
-				$('.menu_lat').animate({
-					left:'-100%'
-				});	
-			});
-		});
-		/*Fin carga el creador de contactos*/
+/*Carga el administrador de municipios*/
+function carga_administrador_municipios() {
+	$("#contenido").load("admin_muni/index_municipios.php");
+	
+	$('.menu_superior').animate({
+			left:'-100%'
+	});
+};
+/*Fin carga el administrador de municipios*/
+/*Carga el Módulo de radicación de entrada*/
+function carga_radicacion_entrada(){
+	$("#contenido").load("radicacion_entrada/index_entrada.php");/*toca cambiar al terminar el 
+	modulo ya que no puede quedar en el directorio raiz*/	
+	$('.menu_lat').animate({
+		left:'-100%'
+	});		
+};
+/*Fin carga el Módulo de radicación de entrada*/
 	/*Fin funcion para que al dar clic cargue el div #contenido*/
 
 

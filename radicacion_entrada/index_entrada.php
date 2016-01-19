@@ -5,11 +5,11 @@ require_once('../login/conexion.php');?>
 <head>
 	<meta charset="UTF-8">
 	<title>Buscador de Remitente</title>
-	<script type="text/javascript" src="../include/js/jquery.js"></script>
-	<script type="text/javascript" src="../include/js/funciones_contactos.js"></script>
-	<script type="text/javascript" src="../include/js/funciones_municipios.js"></script>
+	<script type="text/javascript" src="include/js/jquery.js"></script>
+	<script type="text/javascript" src="include/js/funciones_contactos.js"></script>
+	<script type="text/javascript" src="include/js/funciones_municipios.js"></script>
 	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type ="text/css">
-	<link rel="stylesheet" href="../include/estilos_entrada.css">
+	<link rel="stylesheet" href="include/estilos_entrada.css">
 	<!--<link rel="stylesheet" href="../include/estilos_municipios.css">-->
 </head>
 <body>
@@ -134,7 +134,7 @@ require_once('../login/conexion.php');?>
 		<div class="center" id="logo">
 			<h1>Módulo de radicación de entrada</h1>
 			
-			<img src="../imagenes/jonasLogo.png" width="200" alt="Jonas SGD" title="Logo Jonas	">	
+			<img src="imagenes/jonasLogo.png" width="200" alt="Jonas SGD" title="Logo Jonas	">	
 		</div>
 		<div class="form center">
 			<form action="" method="post" name="formulario_remitente_radicacion_entrada" id="formulario_remitente_radicacion_entrada" class="form">

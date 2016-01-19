@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="include/iconos/fonts/style.css">
 	<!--<link rel="stylesheet" href="include/estilos.css"> -->
 	<link rel="stylesheet" href="include/estilos3.css">
-	<script type="text/javascript" src="/include/js/jquery.js"></script>
+	<script type="text/javascript" src="include/js/jquery.js"></script>
 	<script type="text/javascript" src="include/js/funciones_menu.js"></script>
 	
 </head>
@@ -35,7 +35,7 @@
 							<li><a href="#"><span class="icon-tree"></span> Dependencias</a></li>
 							<li><a href="#"><span class="icon-tools"></span> Configuración de Envíos</a></li>
 							<li><a href="#"><span class="icon-cogs"></span> Configuración de Devoluciones</a></li>
-							<li id="admin_municipios"><a href="#"><span class="icon-globe"></span> Configuración Países-Departamentos-Municipios</a></li>
+							<li id="admin_municipios" onclick="carga_administrador_municipios()"><a href="#"><span class="icon-globe"></span> Configuración Países-Departamentos-Municipios</a></li>
 							<li><a href="#"><span class="icon-thumbs-up"></span> Generar Paz y Salvo Jonas</a></li>
 						</ul>
 					</li>
@@ -61,7 +61,7 @@
 							<li class="submenu">
 								<a href="#"><span class="icon-file-empty"><span class="titulo_submenu"> Radicación </span><span class="caret icon-circle-down"></span></span></a>
 								<ul class="children">
-									<li id="radicacion_entrada"><a href="#"><span class="icon-sign-in"></span> Radicación de Entrada</a></li>
+									<li onclick ="carga_radicacion_entrada()"><a href="#"><span class="icon-sign-in"></span> Radicación de Entrada</a></li>
 									<li><a href="#"><span class="icon-sign-out"></span> Radicación de Salida</a></li>
 									<li><a href="#"><span class="icon-cycle"></span> Radicación Interna</a></li>
 									<li><a href="#"><span class="icon-add-to-list"></span> Radicación Masiva</a></li>
