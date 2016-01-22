@@ -29,21 +29,23 @@ require_once('../login/conexion.php');?>
 							<tr>
 								<td>Nombre completo (Incluyendo Sigla) : </td>
 								<td class="celda"><input type="text" placeholder="Digite Nombre" id="nombre_contacto">
+									<div id="sugerencia_nombre_contacto" class="sugerencia"></div>
 									<div id="error_nombre_contacto" class="errores">El nombre del contacto es obligatorio</div>
 								</td>
 							</tr>
 							<tr>
 								<td>NIT del contacto (con guiones):</td>
 								<td class ="celda"><input type="text" placeholder="Digite NIT" id="nit_contacto">
+									<div id="sugerencia_nit_contacto" class="sugerencia"></div>
 									<div id="error_nit_contacto" class="errores">El número de NIT es obligatorio</div>
 								</td>
 							</tr>
 							<tr>
 								<td>Ubicación Contacto :</td>
 								<td class ="celda">
-									<form action="" method="post" name="ubicacion_contacto" id="ubicacion_contacto">
+								<!--	<form action="" method="post" name="ubicacion_contacto" id="ubicacion_contacto"> -->
 										<input type="text" placeholder="BOGOTA | D.C. | COLOMBIA" id="ubicacion_contacto" >
-									</form>
+								<!--	</form> -->
 									<div id="resultado"></div>
 									<div id="error_ubicacion_contacto" class="errores">La ubicación del contacto que ha digitado no es 
 										válida. Este campo es obligatorio. En caso que no encuentre una ubicación correcta, comuníquese

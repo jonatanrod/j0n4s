@@ -1,22 +1,55 @@
 /*Script para buscador contactos*/
-$(function(){
+$(function buscador_remitente(){
 	$('#search_remitente').focus();
 	$('#formulario_remitente_radicacion_entrada').submit(function(e){
 		e.preventDefault();
 	});
-	$('#search_remitente').keyup(function(){
+	$('#search_remitente').keyup(function buscador_remitente(){
 		var envio2 = $('#search_remitente').val();
 
 		$('#logo').html('<h2>Radicación de Entrada</h2>');
-		$('#resultados').html('<img src="../imagenes/loading.gif" alt="" />');
+		$('#resultados').html('<img src="imagenes/loading.gif" alt="" />');
 
 		$.ajax({
-			type: 'POST',
-			url:  'radicacion_entrada/buscador_remitente.php',
-			data: ('search_remitente='+envio2),
+			type: 'GET',
+			url:  'radicacion_entrada/buscador_remitente.php?search_remitente='+envio2+'&permiso='+'2',
+			//data: ('search_remitente='+envio2, 'permiso='+permiso),
 			success: function(resp){
 				if(resp!=""){
 					$('#resultados').html(resp);
+				}
+			}
+		})
+	})
+	$('#nombre_contacto').keyup(function buscador_remitente(){
+		var nombre_contacto = $('#nombre_contacto').val();
+
+//		$('#logo').html('<h2>Radicación de Entrada</h2>');
+		$('#resultados').html('<img src="imagenes/loading.gif" alt="" />');
+
+		$.ajax({
+			type: 'GET',
+			url:  'radicacion_entrada/buscador_remitente.php?search_remitente='+nombre_contacto+'&permiso='+'1',
+			//data: ('search_remitente='+nombre_contacto, 'permiso='+permiso),
+			success: function(resp){
+				if(resp!=""){
+					$('#sugerencia_nombre_contacto').html(resp);
+				}
+			}
+		})
+	})
+	$('#nit_contacto').keyup(function buscador_remitente(){
+		var nit_contacto = $('#nit_contacto').val();
+
+//		$('#logo').html('<h2>Radicación de Entrada</h2>');
+//		$('#resultados').html('<img src="imagenes/loading.gif" alt="" />');
+		$.ajax({
+			type: 'GET',
+			url:  'radicacion_entrada/buscador_remitente.php?search_nit='+nit_contacto,
+			//data: ('search_remitente='+nombre_contacto, 'permiso='+permiso),
+			success: function(resp){
+				if(resp!=""){
+					$('#sugerencia_nit_contacto').html(resp);
 				}
 			}
 		})
