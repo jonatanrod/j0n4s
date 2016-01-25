@@ -10,7 +10,6 @@ require_once('../login/conexion.php');?>
 	<script type="text/javascript" src="include/js/funciones_municipios.js"></script>
 	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type ="text/css">
 	<link rel="stylesheet" href="include/estilos_entrada.css">
-	<!--<link rel="stylesheet" href="../include/estilos_municipios.css">-->
 </head>
 <body>
 <!--Desde aqui el div que contiene el formulario para agregar contacto-->
@@ -28,16 +27,18 @@ require_once('../login/conexion.php');?>
 						<table border ="10">
 							<tr>
 								<td>Nombre completo (Incluyendo Sigla) : </td>
-								<td class="celda"><input type="text" placeholder="Digite Nombre" id="nombre_contacto">
+								<td class="celda"><input type="text" placeholder="Digite Nombre" id="nombre_contacto" onblur="nombre_mayusculas()">
 									<div id="sugerencia_nombre_contacto" class="sugerencia"></div>
 									<div id="error_nombre_contacto" class="errores">El nombre del contacto es obligatorio</div>
+									<div id="contacto_ya_existe" class="errores">El nombre del contacto ya existe, no es posible crear un nuevo contacto con éste nombre</div>
 								</td>
 							</tr>
 							<tr>
 								<td>NIT del contacto (con guiones):</td>
-								<td class ="celda"><input type="text" placeholder="Digite NIT" id="nit_contacto">
+								<td class ="celda"><input type="text" placeholder="Digite NIT" id="nit_contacto" onblur="espacios_nit()">
 									<div id="sugerencia_nit_contacto" class="sugerencia"></div>
 									<div id="error_nit_contacto" class="errores">El número de NIT es obligatorio</div>
+									<div id="nit_ya_existe" class="errores">El nombre del contacto ya existe, no es posible crear un nuevo contacto con éste NIT</div>
 								</td>
 							</tr>
 							<tr>

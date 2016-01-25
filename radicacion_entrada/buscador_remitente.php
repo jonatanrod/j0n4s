@@ -85,7 +85,7 @@
 			$busca_nit = $_GET['search_nit'];
 /*
 -------------------------------------------------------------------------------------------------------------------------------
-Falta modificar la $consulta_nit para que traiga los datos correctos. by jrodriguez
+Falta modificar la $consulta_nit para que traiga los datos correctos. by jrodriguez 
 -------------------------------------------------------------------------------------------------------------------------------
 */			
 					$consulta_nit = "SELECT * FROM contactos WHERE UPPER(nombre_contacto)
@@ -93,7 +93,7 @@ Falta modificar la $consulta_nit para que traiga los datos correctos. by jrodrig
 					UPPER('%".$busca_nit."%') order by nombre_contacto limit 10";
 					$fila_nit = pg_query($conectado,$consulta_nit);
 			/*Calcula el numero de registros que genera la consulta anterior.*/
-				$registros= pg_num_rows($fila_nit);
+					$registros= pg_num_rows($fila_nit);
 			/*Recorre el array generado e imprime uno a uno los resultados.*/	
 
 			if($registros>0 && $busca_nit!=''){//$busca_contactos= $search
@@ -112,9 +112,8 @@ Falta modificar la $consulta_nit para que traiga los datos correctos. by jrodrig
 						$codigo_contacto = $linea['codigo_contacto'];
 						$fecha_creacion_usuario = $linea['fecha_creacion'];
 
-					echo "<div class='art'>"
-						/*Aqui defino cuál va a ser el comportamiento al dar clic sobre el 
-						resultado obtenido desde el "a href"*/;
+					echo "<div class='art'>";
+			/* Aqui defino cuál va a ser el comportamiento al dar clic sobre el resultado obtenido desde el "a href" */
 
 					echo "<a href=\"javascript:cargar_formulario_radicacion_entrada('$nombre_contacto','$nit_contacto','$ubicacion_contacto','$direccion_contacto','$telefono_contacto','$mail_contacto','$representante_legal', '$codigo_contacto')\">";?>
 							
@@ -125,23 +124,23 @@ Falta modificar la $consulta_nit para que traiga los datos correctos. by jrodrig
 									</strong>'." (".
 								 	$nit_contacto.") ".
 								"</span>";
-						/*Etiqueta span para que el nombre del pais y continente tenga otro formato*/
+			/*Etiqueta span para que el nombre del pais y continente tenga otro formato*/
 							echo'<br/><span class="subtitulo">'
 									.$ubicacion_contacto." / ".
 									 $direccion_contacto." / Telefono : ".
 									 $telefono_contacto." / ".
 									 $mail_contacto."<br/>".
-						/*Funcion php para traducir la fecha (January->Enero)*/
+			/*Funcion php para traducir la fecha (January->Enero)*/
 									 "Creado el "; setlocale(LC_TIME, "es_CO.UTF-8");
 									 echo strftime("%A %d de %B del %Y");
- 						/*Fin funcion php para traducir la fecha (January->Enero)*/
+ 			/*Fin funcion php para traducir la fecha (January->Enero)*/
 									 echo " por $creador_contacto".
 								"</span>";
-						/*Fin etiqueta span para que el nombre del pais y continente tenga otro formato*/
+			/*Fin etiqueta span para que el nombre del pais y continente tenga otro formato*/
 						echo "</a>";
-						/*Hasta aqui debe ir la etiqueta "a href" para que cuando haga clic*/
+			/*Hasta aqui debe ir la etiqueta "a href" para que cuando haga clic*/
 						echo "</div>";//cierra div class='resultado_municipio'(art)
-					//	$municipio_recibido = $linea['nombre_municipio'];
+						//	$municipio_recibido = $linea['nombre_municipio'];
 					}
 				}while ($fila=pg_fetch_assoc($fila));
 			}elseif($registros>0 && $busca_contactos==''){
@@ -154,7 +153,7 @@ Falta modificar la $consulta_nit para que traiga los datos correctos. by jrodrig
 					echo "<div> No se han encontrado resultados. Si desea ingresar un nuevo contacto haga click 
 					<a href='javascript:abrirVentanaAgregarContacto();'>aqui</a> </div>";
 				}else{
-					echo "string";
+					echo " ";
 				}
 			}
 		}else{

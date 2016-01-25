@@ -25,7 +25,7 @@ $(function buscador_remitente(){
 		var nombre_contacto = $('#nombre_contacto').val();
 
 //		$('#logo').html('<h2>Radicación de Entrada</h2>');
-		$('#resultados').html('<img src="imagenes/loading.gif" alt="" />');
+//		$('#resultados').html('<img src="imagenes/loading.gif" alt="" />');
 
 		$.ajax({
 			type: 'GET',
@@ -59,6 +59,7 @@ $(function buscador_remitente(){
 /*Funciones para desplegar ventana modal contacto*/
 function abrirVentanaAgregarContacto(){
 	$(".agregar_contacto").slideDown("slow");
+	$('#nombre_contacto').focus();
 }
 function cerrarVentanaAgregarContacto(){
 	$(".agregar_contacto").slideUp("slow");
@@ -79,7 +80,18 @@ function cargar_formulario_radicacion_entrada(nombre_contacto,nit_contacto,ubica
 {
 	$('#contenido').load('radicacion_entrada/entrada.php',{var1:nombre_contacto, var2:nit_contacto, var3:ubicacion_contacto, var4:direccion_contacto, var5:telefono_contacto, var6:mail_contacto, var7:representante_legal, var8:codigo_contacto})
 }
+/*Funcion para dejar input en mayusculas*/
+function nombre_mayusculas() {
+	var x =$('#nombre_contacto').val();
+	$('#nombre_contacto').val(x.toUpperCase()); 
+}
+function espacios_nit(){
+	var str = $('#nit_contacto').val();
+	$('#nit_contacto').val(str.replace(/\s/g, ''));
+}
+/*Fin funcion para dejar input en mayusculas*/
 /*Fin funciones para cargar datos en formulario nuevo contacto*/
+
 /*Funcion para volver atras en radicacion entrada*/
 function atras(){
 	$('#contenido').load('radicacion_entrada/index_entrada.php')
@@ -184,13 +196,18 @@ $(function buscador_municipios_para_contacto(){
 	$('#ubicacion_contacto').keyup(function buscador_municipios_para_contacto(){
 		var envio = $('#ubicacion_contacto').val();
 		$('#logo').html('<h2>Buscador de Municipios</h2>');
-		$('#resultados').html('<h2><img src="../imagenes/loading.gif" alt="" /></h2>');
+		//$('#resultados').html('<h2><img src="/imagenes/loading.gif" alt="" /></h2>');
+		//$('#contenido').load('radicacion_entrada/entrada.php',{var1:nombre_contacto, var2:nit_contacto, var3:ubicacion_contacto, var4:direccion_contacto, var5:telefono_contacto, var6:mail_contacto, var7:representante_legal, var8:codigo_contacto})
+
 
 		$.ajax({
 			type: 'POST',
-			url: '../admin_muni/buscador_municipios.php',
-			data: ('search='+envio),
-			success: function(resp){
+			url: 'admin_muni/buscador_municipios.php',
+			data: {
+				'search' : envio,
+				'formulario_nuevo_contacto' : '1'
+			},
+				success: function(resp){
 				if(resp!=""){
 					$('#resultado').html(resp);
 				}

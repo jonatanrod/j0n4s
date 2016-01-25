@@ -7,17 +7,21 @@
 	<?php 
 		require_once('../login/conexion.php');
 		sleep(1);
-		$permiso_administrador_municipios = 1;/*Falta por definir el permiso en usuarios
+		$permiso_administrador_municipios = 0;/*Falta por definir el permiso en usuarios
 		Lo pongo temporalmente 1 pero hay que definirlo.*/
-		$formulario_nuevo_contacto = 1; /*Falta por definir como lo traigo desde el formulario
-		de agregar contacto */
+		if(isset($_POST['formulario_nuevo_contacto'])){
+			$formulario_nuevo_contacto = 1; /*Falta por definir como lo traigo desde el formulario
+			de agregar contacto */	
+		}
+		
+		echo "eeeeeeeeeeeeeeeee $formulario_nuevo_contacto ssssssssss";
 		$search ='';
 		if(isset($_POST['search'])){
 			$search = $_POST['search'];
 		}
 
 		$consulta = "SELECT * FROM municipios WHERE UPPER(nombre_municipio)
-		LIKE UPPER('%".$search."%')	order by nombre_municipio";
+		LIKE UPPER('%".$search."%')	order by nombre_municipio limit 10";
 		$fila = pg_query($conectado,$consulta);
 	/*Calcula el numero de registros que genera la consulta anterior.*/
 		$registros= pg_num_rows($fila);
@@ -29,17 +33,13 @@
 						$linea = pg_fetch_array($fila);
 						echo "<div class='art'>";
 						/*Aqui defino cuál va a ser el comportamiento al dar click sobre el 
-						resultado obtenido*/
-							
+						resultado obtenido*/			
 							echo $linea['nombre_municipio']." (".
 								 $linea['nombre_departamento'].") ";
 							echo "<span>".$linea['nombre_pais']." - ".$linea['nombre_continente']." "."</span>";
-						
 							echo "<span class='ver_creador'> / Creado por ".$linea['creador_municipio']." (".
 								 $linea['fecha_creacion'].")</span>";
 						echo "</div>";//cierra div class='art'
-						
-
 					}
 				}while ($fila=pg_fetch_assoc($fila));
 			}elseif($search===''){
