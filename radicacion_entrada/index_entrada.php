@@ -24,7 +24,7 @@ require_once('../login/conexion.php');?>
 				<hr>
 				<center>	
 					<form id ="form_datos_contacto" action="">
-						<table border ="10">
+						<table border ="0">
 							<tr>
 								<td>Nombre completo (Incluyendo Sigla) : </td>
 								<td class="celda"><input type="text" placeholder="Digite Nombre" id="nombre_contacto" onblur="nombre_mayusculas()">

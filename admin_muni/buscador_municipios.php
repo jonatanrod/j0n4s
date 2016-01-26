@@ -7,14 +7,14 @@
 	<?php 
 		require_once('../login/conexion.php');
 		sleep(1);
-		$permiso_administrador_municipios = 0;/*Falta por definir el permiso en usuarios
+		$permiso_administrador_municipios = 1;/*Falta por definir el permiso en usuarios
 		Lo pongo temporalmente 1 pero hay que definirlo.*/
 		if(isset($_POST['formulario_nuevo_contacto'])){
 			$formulario_nuevo_contacto = 1; /*Falta por definir como lo traigo desde el formulario
 			de agregar contacto */	
 		}
 		
-		echo "eeeeeeeeeeeeeeeee $formulario_nuevo_contacto ssssssssss";
+	/*Isset que ajax modifica para ejecutar la consulta que despliega las sugerencias */	
 		$search ='';
 		if(isset($_POST['search'])){
 			$search = $_POST['search'];
@@ -31,14 +31,27 @@
 				do{
 					for ($i=0;$i<$registros;$i++){
 						$linea = pg_fetch_array($fila);
+
+						$nombre_municipio = $linea['nombre_municipio'];
+						$nombre_departamento = $linea['nombre_departamento'];
+						$nombre_pais = $linea['nombre_pais'];
+						$nombre_continente = $linea['nombre_continente'];
+						$creador_municipio = $linea['creador_municipio'];
+						$fecha_creacion = $linea['fecha_creacion'];
+						
 						echo "<div class='art'>";
+						/*Aqui defino cuál va a ser el comportamiento al dar clic sobre el resultado obtenido desde el "a href"*/;
+							echo "<a href=\"javascript:cargar_modifica_municipio('$nombre_municipio','$nombre_departamento','$nombre_pais','$nombre_continente','$creador_municipio','$fecha_creacion')\">";
+
 						/*Aqui defino cuál va a ser el comportamiento al dar click sobre el 
 						resultado obtenido*/			
-							echo $linea['nombre_municipio']." (".
-								 $linea['nombre_departamento'].") ";
-							echo "<span>".$linea['nombre_pais']." - ".$linea['nombre_continente']." "."</span>";
-							echo "<span class='ver_creador'> / Creado por ".$linea['creador_municipio']." (".
-								 $linea['fecha_creacion'].")</span>";
+							echo $nombre_municipio." (".
+								 $nombre_departamento.") ";
+							echo "<span>".$nombre_pais." - ".$nombre_continente." "."</span>";
+							echo "<span class='ver_creador'> / Creado por ".$creador_municipio." (".
+								 $fecha_creacion.")</span>";
+							echo "</a>";
+					/*Hasta aqui debe ir la etiqueta "a href" para que cuando haga clic en cada uno de los resultados*/
 						echo "</div>";//cierra div class='art'
 					}
 				}while ($fila=pg_fetch_assoc($fila));

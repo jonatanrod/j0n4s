@@ -12,7 +12,7 @@ $(function buscador_remitente(){
 
 		$.ajax({
 			type: 'GET',
-			url:  'radicacion_entrada/buscador_remitente.php?search_remitente='+envio2+'&permiso='+'2',
+			url:  'radicacion_entrada/buscador_remitente.php?search_remitente='+envio2+'&desde_formulario='+'2',
 			//data: ('search_remitente='+envio2, 'permiso='+permiso),
 			success: function(resp){
 				if(resp!=""){
@@ -29,7 +29,7 @@ $(function buscador_remitente(){
 
 		$.ajax({
 			type: 'GET',
-			url:  'radicacion_entrada/buscador_remitente.php?search_remitente='+nombre_contacto+'&permiso='+'1',
+			url:  'radicacion_entrada/buscador_remitente.php?search_remitente='+nombre_contacto+'&desde_formulario='+'1',
 			//data: ('search_remitente='+nombre_contacto, 'permiso='+permiso),
 			success: function(resp){
 				if(resp!=""){
@@ -80,16 +80,17 @@ function cargar_formulario_radicacion_entrada(nombre_contacto,nit_contacto,ubica
 {
 	$('#contenido').load('radicacion_entrada/entrada.php',{var1:nombre_contacto, var2:nit_contacto, var3:ubicacion_contacto, var4:direccion_contacto, var5:telefono_contacto, var6:mail_contacto, var7:representante_legal, var8:codigo_contacto})
 }
-/*Funcion para dejar input en mayusculas*/
+/*Funciones para dejar input en mayusculas y eliminar los espacios*/
 function nombre_mayusculas() {
 	var x =$('#nombre_contacto').val();
 	$('#nombre_contacto').val(x.toUpperCase()); 
 }
 function espacios_nit(){
 	var str = $('#nit_contacto').val();
+	str = str.replace('-','',str);
 	$('#nit_contacto').val(str.replace(/\s/g, ''));
 }
-/*Fin funcion para dejar input en mayusculas*/
+/*Fin funciones para dejar input en mayusculas y eliminar los espacios*/
 /*Fin funciones para cargar datos en formulario nuevo contacto*/
 
 /*Funcion para volver atras en radicacion entrada*/

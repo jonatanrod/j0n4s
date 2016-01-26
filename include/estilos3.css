@@ -169,8 +169,11 @@ body{
 	float: left;
 	width: calc(100% - 200px);
 }
-.ventana{
+#ventana{
 	display: none;
+}
+#ventana2{
+	display:none;
 }
 /*Fin estilo del body*/
 

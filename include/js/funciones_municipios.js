@@ -1,10 +1,8 @@
 /*Script para buscador del administrador de municipios*/
-$(function administrador_buscador_municipios(){
+$(function buscador_municipios(){
 	$('#search').focus();
-	$('#search_form').submit(function administrador_buscador_municipios(h){
-		h.preventDefault();
-	})
-	$('#search').keyup(function administrador_buscador_municipios(){
+	
+	$('#search').keyup(function buscador_municipios(){
 		var envio = $('#search').val();
 		$('#logo').html('<h2>Buscador de Municipios</h2>');
 		$('#desplegable_resultados').html('<h2><img src="imagenes/loading.gif" alt="" /></h2>');
@@ -12,8 +10,10 @@ $(function administrador_buscador_municipios(){
 		$.ajax({
 			type: 'POST',
 			url: 'admin_muni/buscador_municipios.php',
-			data: ('search='+envio),
-			success: function(resp){
+			data: {
+				'search' : envio,
+				'formulario_nuevo_contacto' : '1'
+			},			success: function(resp){
 				if(resp!=""){
 					$('#desplegable_resultados').html(resp);
 				}
@@ -22,12 +22,17 @@ $(function administrador_buscador_municipios(){
 	})
 })
 /*Fin script para buscador del administrador de municipios*/
+function cargar_modifica_municipio(nombre_municipio,nombre_departamento,nombre_pais,nombre_continente,creador_municipio,fecha_creacion){
+	alert(nombre_municipio + nombre_departamento + nombre_pais+nombre_continente+creador_municipio+fecha_creacion);	
+	$("#ventana2").slideDown("slow");
+	
+}
 /*Funciones para desplegar ventana modal municipios*/
 function abrirVentanaCrearMunicipios(){
-	$(".ventana").slideDown("slow");
+	$("#ventana").slideDown("slow");
 }
 function cerrarVentanaCrearMunicipios(){
-	$(".ventana").slideUp("slow");
+	$("#ventana").slideUp("slow");
 //	$("#contenido").load("admin_muni/index_municipios.php");
 }
 /*Fin funciones para desplegar ventana modal municipios*/
@@ -89,11 +94,12 @@ function insertar_municipios(){
 			success: function(resp){
 				console.log('resp')
 				alert("El municipio ha sido agregado correctamente.")
-				$(".ventana").slideUp("slow");
+				$("#ventana").slideUp("slow");
 				$("#contenido").load("admin_muni/index_municipios.php");
 			}
 		})
 	})
 } 
 /*Fin funcion para insertar datos de municipios*/
+
 

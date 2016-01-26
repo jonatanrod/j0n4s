@@ -49,7 +49,7 @@ body{
 	float: auto;
 	display: inline-block;
 }
-.ventana{
+#ventana{
 	width: 100%;
 	height: 100%;
 	color: #FFFFFF;
@@ -59,7 +59,7 @@ body{
 	left: 0;
 	display: none;
 }
-.ventana .form{
+#ventana .form{
 	width: 450px;
 	height: 350px;
 	padding: 25px;
@@ -72,19 +72,53 @@ body{
 	margin-top: -175px;
 	text-align: center;
 }
-.ventana .form h1{
+#ventana .form h1{
 	font-size: 20px;
 }
+#ventana .form table{
+	text-align: left;
+	width: 350px;
+}
+
+
+
+#ventana2{
+	width: 100%;
+	height: 100%;
+	color: #FFFFFF;
+	position: fixed;
+	background-image: url(../imagenes/bg-modal.png);
+	top: 0;
+	left: 0;
+	display: none;
+}
+#ventana2 .form{
+	width: 450px;
+	height: 350px;
+	padding: 25px;
+	background-color: #FFFFFF;
+	color: #666;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	margin-left: -175px;
+	margin-top: -175px;
+	text-align: center;
+}
+#ventana2 .form h1{
+	font-size: 20px;
+}
+#ventana2 .form table{
+	text-align: left;
+	width: 350px;
+}
+
 .cerrar{
 	font-weight: 900;
 	text-align: right;
 }
 .cerrar a{
 	color: red;
-}
-.ventana .form table{
-	text-align: left;
-	width: 350px;
 }
 .boton_enviar{
 	border-radius: 10px;
