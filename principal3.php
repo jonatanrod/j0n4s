@@ -9,7 +9,7 @@
 	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type ="text/css">
 	<link rel="stylesheet" href="include/iconos/fonts/style.css">
 	<!--<link rel="stylesheet" href="include/estilos.css"> -->
-	<link rel="stylesheet" href="include/estilos3.css">
+	<link rel="stylesheet" href="include/css/estilos_menu_principal.css">
 	<script type="text/javascript" src="include/js/jquery.js"></script>
 	<script type="text/javascript" src="include/js/funciones_menu.js"></script>
 	
@@ -94,34 +94,7 @@
 				</nav>
 			</div>
 		</div><!--Fin del menu_izquierda de principal3.php-->
-		<!--Inicio del contenido de principal2.php-->
-
-
-<!-- Inicio prueba de acordeon	
-<div id="container-main">
-    <h1>Mejores Jugadores Liga BBVA</h1>
- 
-    <div class="accordion-container">
-        <a href="#" class="accordion-titulo">Messi<span class="toggle-icon"></span></a>
-        <div class="accordion-content">
-            <img src="http://e0.365dm.com/15/05/660x350/champions-league-barcelona-bayern-munich-soccer-messi_3299830.jpg?20150506214236" alt=""/>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
- 
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>  
-    </div>
-    
-    <div class="accordion-container">
-        <a href="#" class="accordion-titulo">Cristiano<span class="toggle-icon"></span></a>
-        <div class="accordion-content">
-            <img src="http://www.abc.es/Media/201301/10/cristiano-ronaldo--644x362.jpg" alt=""/>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
- 
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-    </div>
-</div>
- Fin prueba de acordeon-->	
+<!--Inicio del contenido de principal2.php-->
 		<div id="contenido">
 			Contenido
 		</div>

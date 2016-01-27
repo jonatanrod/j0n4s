@@ -1,0 +1,181 @@
+
+.container{
+	width:100%;
+	min-height: auto;
+	margin: auto;
+	padding: 20px;
+	background-color: #FFFFFF;
+	border: solid 1px #CCC;
+}
+.form input{
+	width: 80%;
+	padding: 6px;
+}
+#ventana{
+	display: none;
+	width: 100%;
+	height: 100%;
+	color: #FFFFFF;
+	position: fixed;
+	background-image: url(../../imagenes/bg-modal.png);
+	top: 0;
+	left: 0;
+}
+#ventana .form{
+	width: auto;
+	height: auto;
+	padding: 25px;
+	background-color: #FFFFFF;
+	color: #666;
+	top: 20%;
+	left: 30%;
+	position: absolute;
+	text-align: center;
+	border-radius: 20px;
+}
+#ventana .form table{
+	text-align: left;
+	width: 100%;
+}
+#ventana2{
+	display: none;
+	width: 100%;
+	height: 100%;
+	color: #FFFFFF;
+	position: fixed;
+	background-image: url(../../imagenes/bg-modal.png);
+	top: 0;
+	left: 0;
+}
+#ventana2 .form{
+	width: auto;
+	height: auto;
+	padding: 25px;
+	background-color: #FFFFFF;
+	color: #666;
+	top: 25%;
+	left: 25%;
+	position: absolute;
+	text-align: center;
+	border-radius: 20px;
+}
+#ventana2 .form table{
+	text-align: left;
+	width: 100%;
+}
+.cerrar{
+	font-weight: 900;
+	text-align: right;
+}
+.cerrar a{
+	color: red;
+}
+.boton_enviar{
+	border-radius: 10px;
+}
+.boton_enviar:hover{
+	background-color: #2D9DC6;
+	color: #FFFFFF;
+}
+#desplegable_resultados{
+	width: 90%;
+	min-height: 100px;
+}
+.center{
+	text-align: center;
+}
+.footer{
+	font-size: 14px;
+	color: #252932;
+	clear: both;
+}
+
+/*Se inicia estilos para el resultado de buscador_municipios.php*/
+.art{
+	margin-bottom: 2px;
+	background-color: #F1F1F1;
+	padding: 5px;
+	border-bottom: 1px solid rgba(255,255,255,.5);
+	display: block;
+	width: auto;
+	border-radius: 10px;
+}
+.art a{
+	text-decoration: none;
+	display: block;	
+}
+.art span{
+	font-size: 15px;
+}
+.art:hover{
+	box-shadow: 10000px 0 #2D9DC6 inset;
+	color: #FFFFFF;
+}
+.ver_creador{
+	font-size: 11px;
+	float: auto;
+	display: inline-block;
+}
+/*Fin de estilos para el resultado de buscador_municipios.php*/
+
+/*Se inicia estilos al form cuando es movil o ventana menos de 768px
+ de principal3.php*/			
+@media screen and (max-width: 768px){
+
+	#ventana{
+		width: 100%;
+		height: auto; /*Si height es 100% hace la animacion de display hacia abajo*/
+		color: #FFFFFF;
+		position: relative;
+		top: 0;
+		left: 0;
+		display: none;
+	}
+	#ventana .form{
+		color:#FFFFFF;
+		width: 90%;
+		height: auto;
+		padding: 5px;
+		top: 2px;
+		left: 2px;
+		position: absolute;
+		border-radius: 20px;
+		background: #585858;
+	}
+	#ventana2{
+		width: 100%;
+		height: auto; /*Si height es 100% hace la animacion de display hacia abajo*/
+		color: #FFFFFF;
+		position: relative;
+		top: 0;
+		left: 0;
+		display: none;
+	}
+	#ventana2 .form{
+		color:#FFFFFF;
+		width: 90%;
+		height: auto;
+		padding: 5px;
+		top: 2px;
+		left: 2px;
+		position: absolute;
+		border-radius: 20px;
+		background: #585858;
+	}
+}
+.errores{
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	-ms-box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	-o-box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	background: red;
+	color: #FFFFFF;
+	font-size: 12px;
+	position: relative;	
+	padding: 5px;
+	border-radius: 10px;
+	float: center;
+	display: none;
+	text-align: center;
+}

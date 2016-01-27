@@ -9,10 +9,9 @@
 		sleep(1);
 		$permiso_administrador_municipios = 1;/*Falta por definir el permiso en usuarios
 		Lo pongo temporalmente 1 pero hay que definirlo.*/
-		if(isset($_POST['formulario_nuevo_contacto'])){
-			$formulario_nuevo_contacto = 1; /*Falta por definir como lo traigo desde el formulario
-			de agregar contacto */	
-		}
+		if(isset($_POST['desde_formulario'])){
+			$desde_formulario = 1; 
+		}else
 		
 	/*Isset que ajax modifica para ejecutar la consulta que despliega las sugerencias */	
 		$search ='';
@@ -41,7 +40,12 @@
 						
 						echo "<div class='art'>";
 						/*Aqui defino cuál va a ser el comportamiento al dar clic sobre el resultado obtenido desde el "a href"*/;
-							echo "<a href=\"javascript:cargar_modifica_municipio('$nombre_municipio','$nombre_departamento','$nombre_pais','$nombre_continente','$creador_municipio','$fecha_creacion')\">";
+							if($desde_formulario===1){
+								echo "<a href=\"javascript:cargar_modifica_municipio('$nombre_municipio','$nombre_departamento','$nombre_pais','$nombre_continente')\">";
+							}else{
+								echo "<a href=\"#\"> <script> alert('No, no hay Ahora formulario_nuevo_contacto es '+$desde_formulario);</script>";
+							}
+							//
 
 						/*Aqui defino cuál va a ser el comportamiento al dar click sobre el 
 						resultado obtenido*/			
@@ -57,7 +61,7 @@
 				}while ($fila=pg_fetch_assoc($fila));
 			}elseif($search===''){
 				if($permiso_administrador_municipios==1){
-					if($formulario_nuevo_contacto !=1){
+					if($desde_formulario !=1){
 						echo " Ingresa un parámetro de búsqueda";
 					}		
 				}else{
@@ -72,56 +76,6 @@
 				}
 				
 			}
-
-/*switch para asignar el codigo del continente requerido en la base de datos*/
-	
-		if(isset($_POST['continente'])){
-			$continente = strtoupper($_POST['continente']);
-			switch ($continente) {
-				case 'AMERICA':
-					$id_continente=1;
-					break;
-				case 'ASIA':
-					$id_continente=2;
-					break;	
-				case 'AFRICA':
-					$id_continente=3;
-					break;
-				case 'EUROPA':
-					$id_continente=4;
-					break;	
-				case 'OCEANIA':
-					$id_continente=5;
-					break;	
-				default:
-					$id_continente=1;
-					break;
-			}
-		}
-/* Fin switch para asignar el codigo del continente requerido en la base de datos*/	
-/* Isset de las variables que van a usarse en la consulta*/	
-		if(isset($_POST['pais'])){
-			$pais = strtoupper($_POST['pais']);
-		}
-		if(isset($_POST['departamento'])){
-			$departamento = strtoupper($_POST['departamento']);
-		}	
-		if(isset($_POST['municipio'])){
-			$municipio = strtoupper($_POST['municipio']);
-		}
-		$fecha_creacion= date('l jS \of F Y h:i:s A');
-
-	$usuario = 'Jonas';//Por definir como lo voy a recuperar.
-
-/* Fin isset de las variables que van a usarse en la consulta*/
-	$query ="INSERT INTO municipios (id_continente, nombre_continente, nombre_pais, 
-		nombre_departamento, nombre_municipio, fecha_creacion, creador_municipio) VALUES 
-		($id_continente, '$continente','$pais','$departamento','$municipio','$fecha_creacion','$usuario')";
-	
-	$ejecuta_query = pg_query($conectado,$query) OR DIE ();
-	
-/*Hasta aqui inicio la interaccion con el formulario de insertar municipio*/
-
 	 ?>
  </body>
 </html>

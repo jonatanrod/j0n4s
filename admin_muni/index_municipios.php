@@ -7,7 +7,7 @@
 	<!--<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type ="text/css">-->
 	<script type="text/javascript" src="include/js/jquery.js"></script>
 	<script type="text/javascript" src="include/js/funciones_municipios.js"></script>
-	<link rel="stylesheet" href="include/estilos_municipios.css">
+	<link rel="stylesheet" href="include/css/estilos_municipios.css">
 </head>
 <body>
 <!--Desde aqui el div que contiene el formulario para agregar municipios-->
@@ -17,12 +17,12 @@
 				<div class="cerrar"><a href='javascript:cerrarVentanaCrearMunicipios();'>Cerrar X</a></div>
 				<h1>Formulario Agregar Nuevo Municipio</h1>
 				<hr>
-				<form id ="form_datos" action="">
+				<form id ="formulario_agregar_municipio" action="">
 					<table>
 						<tr>
 							<td>Continente : </td>
 							<td>
-								<select name="continente" id="continente">
+								<select name="continente" id="continente" onchange="limpia_formulario_agregar()">
 									<option value="africa">Africa</option>
 									<option value="america" selected="selected">America</option>
 									<option value="asia">Asia</option>
@@ -51,63 +51,65 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="submit" value="Grabar Municipio" id="bEnviar"></td>
+							<td><input type="submit" value="Grabar Municipio" id="bEnviar" class="boton_enviar"></td>
 						</tr>
 					</table>
 				</form>
 			</div>
 		</div>
 <!--Hasta aqui el div que contiene el formulario para agregar municipios-->
-<!--Desde aqui el div que contiene el formulario para agregar municipios-->
+<!--Desde aqui el div que contiene el formulario para agregar municipios-->	
 		<div id="ventana2">
 			<div class="form">
-				<div class="cerrar"><a href='javascript:cerrarVentanaCrearMunicipios();'>Cerrar X</a></div>
+				<div class="cerrar"><a href='javascript:cerrarVentanaModificarMunicipios();'>Cerrar X</a></div>
 				<h1>Formulario Modificar Municipio</h1>
 				<hr>
-				<form id ="formulario_modificar_municipio" action="">
+				<form action="admin_muni/query_municipios.php" method="post" id ="formulario_modificar_municipio" name ="formulario_modificar_municipio" >
 					<table>
 						<tr>
 							<td>Continente : </td>
 							<td>
-								<select name="continente" id="continente">
-									<option value="africa">Africa</option>
-									<option value="america" selected="selected">America</option>
-									<option value="asia">Asia</option>
-									<option value="europa">Europa</option>
-									<option value="oceania">Oceania</option>
+								<select name="mod_continente" id="mod_continente" onchange="limpia_formulario_modificacion()">
+									<option value="AFRICA">Africa</option>
+									<option value="AMERICA" selected="selected">America</option>
+									<option value="ASIA">Asia</option>
+									<option value="EUROPA">Europa</option>
+									<option value="OCEANIA">Oceania</option>
 								</select>
+								<input type="hidden" name="ant_continente" id="ant_continente" value=""></input>
 							</td>
 						</tr>
 						<tr>
 							<td>País :</td>
-							<td><input type="text" value="Colombia" id="pais">
-								<div id="error_pais" class="errores">El nombre del país es obligatorio</div>
+							<td><input type="text" value="Colombia" name="mod_pais" id="mod_pais">
+								<input type="hidden" name="ant_pais" id="ant_pais" value=""></input>
+								<div id="error_mod_pais" class="errores">El nombre del país es obligatorio</div>
 							</td>
 						</tr>
 						<tr>
 							<td>Departamento :</td>
-							<td><input type="text" placeholder="Digite Departamento" id="departamento">
-								<div id="error_departamento" class="errores">El nombre del departamento es obligatorio</div>
+							<td><input type="text" placeholder="Digite Departamento" name="mod_departamento" id="mod_departamento">
+								<input type="hidden" name="ant_departamento" id="ant_departamento" value=""></input>					
+								<div id="error_mod_departamento" class="errores">El nombre del departamento es obligatorio</div>
 							</td>
 						</tr>
 						<tr>
 							<td>Municipio :</td>
-							<td><input type="text" placeholder="Digite Municipio" id="municipio">
-								<div id="error_municipio" class="errores">El nombre del municipio es obligatorio</div>
+							<td>
+								<input type="text" placeholder="Digite Municipio" name="mod_municipio" id="mod_municipio">
+								<input type="hidden" name="ant_municipio" id="ant_municipio" value=""></input>
+								<div id="error_mod_municipio" class="errores">El nombre del municipio es obligatorio</div>
 							</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="submit" value="Grabar Municipio" id="bEnviar"></td>
+							<td><input type="submit" value="Grabar Municipio" id="enviar_mod" class="boton_enviar"></td>
 						</tr>
 					</table>
 				</form>
 			</div>
 		</div>
 <!--Hasta aqui el div que contiene el formulario para modificar municipios-->
-
-
-
 
 		<div class="center" id="logo">
 			Configuración Paises, Departamentos y Municipios
