@@ -36,13 +36,22 @@ function cargar_modifica_municipio(nombre_municipio,nombre_departamento,nombre_p
 
 
 	abrirVentanaModificarMunicipios();
-/*Validación que los campos de pais, departamento y municipio no estén vacíos 
-para agregar un municipio nuevo.*/
+/*Validación que los campos de pais, departamento y municipio no estén 
+vacíos para modificar correctamente el municipio seleccionado.*/
 	$(document).ready(function validar_modificacion_municipio(){
 		$('#enviar_mod').click(function validar_modificacion_municipio(){
 			var pais =$('#mod_pais').val();
+			$('#mod_pais').val(pais.toUpperCase()); 
 			var departamento =$('#mod_departamento').val();
+			$('#mod_departamento').val(departamento.toUpperCase()); 
 			var municipio =$('#mod_municipio').val();
+			$('#mod_municipio').val(municipio.toUpperCase()); 
+
+			var x =$('#mod_pais').val();
+			
+			var y =$('#mod_departamento').val();
+			var z =$('#mod_municipio').val();
+			$('#mod_municipio').val(z.toUpperCase()); 
 
 			if(pais== ""){
 				$("#error_mod_pais").fadeIn();
@@ -103,6 +112,10 @@ $(document).ready(function validar_varios_municipio(){
 		var pais =$('#pais').val();
 		var departamento =$('#departamento').val();
 		var municipio =$('#municipio').val();
+
+		$('#pais').val(pais.toUpperCase()); 
+		$('#departamento').val(departamento.toUpperCase()); 
+		$('#municipio').val(municipio.toUpperCase());
 
 		if(pais== ""){
 			$("#error_pais").fadeIn();

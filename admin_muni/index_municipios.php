@@ -17,35 +17,35 @@
 				<div class="cerrar"><a href='javascript:cerrarVentanaCrearMunicipios();'>Cerrar X</a></div>
 				<h1>Formulario Agregar Nuevo Municipio</h1>
 				<hr>
-				<form id ="formulario_agregar_municipio" action="">
+				<form action="admin_muni/query_municipios.php" method="post" id ="formulario_agregar_municipio" name ="formulario_agregar_municipio" >
 					<table>
 						<tr>
 							<td>Continente : </td>
 							<td>
 								<select name="continente" id="continente" onchange="limpia_formulario_agregar()">
-									<option value="africa">Africa</option>
-									<option value="america" selected="selected">America</option>
-									<option value="asia">Asia</option>
-									<option value="europa">Europa</option>
-									<option value="oceania">Oceania</option>
+									<option value="AFRICA">Africa</option>
+									<option value="AMERICA" selected="selected">America</option>
+									<option value="ASIA">Asia</option>
+									<option value="EUROPA">Europa</option>
+									<option value="OCEANIA">Oceania</option>
 								</select>
 							</td>
 						</tr>
 						<tr>
 							<td>País :</td>
-							<td><input type="text" value="Colombia" id="pais">
+							<td><input type="text" value="Colombia" name="pais" id="pais">
 								<div id="error_pais" class="errores">El nombre del país es obligatorio</div>
 							</td>
 						</tr>
 						<tr>
 							<td>Departamento :</td>
-							<td><input type="text" placeholder="Digite Departamento" id="departamento">
+							<td><input type="text" placeholder="Digite Departamento" name="departamento" id="departamento">
 								<div id="error_departamento" class="errores">El nombre del departamento es obligatorio</div>
 							</td>
 						</tr>
 						<tr>
 							<td>Municipio :</td>
-							<td><input type="text" placeholder="Digite Municipio" id="municipio">
+							<td><input type="text" placeholder="Digite Municipio" name="municipio" id="municipio">
 								<div id="error_municipio" class="errores">El nombre del municipio es obligatorio</div>
 							</td>
 						</tr>
