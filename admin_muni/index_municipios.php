@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<title>Buscador de Municipios</title>
 	<!--<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type ="text/css">-->
-	<script type="text/javascript" src="include/js/jquery.js"></script>
+	<!--<script type="text/javascript" src="include/js/jquery.js"></script>-->
 	<script type="text/javascript" src="include/js/funciones_municipios.js"></script>
 	<link rel="stylesheet" href="include/css/estilos_municipios.css">
 </head>

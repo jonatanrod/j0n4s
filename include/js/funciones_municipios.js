@@ -40,17 +40,20 @@ function cargar_modifica_municipio(nombre_municipio,nombre_departamento,nombre_p
 vacíos para modificar correctamente el municipio seleccionado.*/
 	$(document).ready(function validar_modificacion_municipio(){
 		$('#enviar_mod').click(function validar_modificacion_municipio(){
+			
 			var pais =$('#mod_pais').val();
 			$('#mod_pais').val(pais.toUpperCase()); 
+			
 			var departamento =$('#mod_departamento').val();
 			$('#mod_departamento').val(departamento.toUpperCase()); 
+			
 			var municipio =$('#mod_municipio').val();
 			$('#mod_municipio').val(municipio.toUpperCase()); 
 
 			var x =$('#mod_pais').val();
-			
 			var y =$('#mod_departamento').val();
 			var z =$('#mod_municipio').val();
+
 			$('#mod_municipio').val(z.toUpperCase()); 
 
 			if(pais== ""){
@@ -74,16 +77,14 @@ vacíos para modificar correctamente el municipio seleccionado.*/
 		});
 	});
 /*Fin de validación que los campos de pais, departamento y municipio no estén vacíos */
-
-	
 }
+
 /*Funciones para desplegar ventana modal municipios*/
 function abrirVentanaCrearMunicipios(){
 	$("#ventana").slideDown("slow");
 }
 function cerrarVentanaCrearMunicipios(){
 	$("#ventana").slideUp("slow");
-//	$("#contenido").load("admin_muni/index_municipios.php");
 }
 function abrirVentanaModificarMunicipios(){
 	$("#ventana2").slideDown("slow");
@@ -92,7 +93,8 @@ function cerrarVentanaModificarMunicipios(){
 	$("#ventana2").slideUp("slow");
 }
 /*Fin funciones para desplegar ventana modal municipios*/
-/*Funcion para limpiar el formulario*/
+
+/*Funciones para limpiar el formulario*/
 function limpia_formulario_modificacion(){
 	$('#mod_pais').val("");
 	$('#mod_departamento').val("");
@@ -103,7 +105,7 @@ function limpia_formulario_agregar(){
 	$('#departamento').val("");
 	$('#municipio').val("");
 }
-/*Fin función para limpiar el formulario*/
+/*Fin funciónes para limpiar el formulario*/
 
 /*Validación que los campos de pais, departamento y municipio no estén vacíos 
 para agregar un municipio nuevo.*/
@@ -160,11 +162,7 @@ function insertar_municipios(){
 			url:'admin_muni/buscador_municipios.php',
 			type: 'POST',
 			data: data,
-			beforeSend: function(){
-				console.log('enviando datos a la DB....')
-			},
 			success: function(resp){
-				console.log('resp')
 				alert("El municipio ha sido agregado correctamente.")
 				$("#ventana").slideUp("slow");
 				$("#contenido").load("admin_muni/index_municipios.php");

@@ -1,3 +1,4 @@
+
 <html>
 <head>
 	<meta charset="utf-8">
@@ -9,7 +10,7 @@
 	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type ="text/css">
 	<link rel="stylesheet" href="include/iconos/fonts/style.css">
 	<!--<link rel="stylesheet" href="include/estilos.css"> -->
-	<link rel="stylesheet" href="include/css/estilos_menu_principal.css">
+	<!--<link rel="stylesheet" href="include/css/estilos_menu_principal.css">-->
 	<script type="text/javascript" src="include/js/jquery.js"></script>
 	<script type="text/javascript" src="include/js/funciones_menu.js"></script>
 	

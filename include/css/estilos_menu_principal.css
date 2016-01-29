@@ -1,11 +1,11 @@
 /*Estilos para la pagina en general*/
 *{
+	font-family: "Roboto Condensed", sans-serif;
 	padding: 0;
 	margin: 0:
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	font-family: "Roboto Condensed", sans-serif;
 }
 #contenedor_general{
 	background-color: #252932;	
@@ -13,37 +13,37 @@
 /*Fin estilos para la pagina en general*/
 /*Estilo de encabezado para la pagina en general*/
 #encabezado{
-	width: 100%;
 	background-color: #023859;
-	z-index: 500;
 	color: #FFFFFF;
 	height: 80px;
+	width: 100%;
+	z-index: 500;
 }
 #encabezado .logo{
+	float: right;
 	font-size: 40px;
 	line-height: 80px;
 	margin-right: 30px;
 	vertical-align: middle;
-	float: right;
 	-webkit-transition:all 500ms ease;
 	-o-transition:all 500ms ease;
 	transition:all 500ms ease;
 }
 #encabezado nav{
-	width: 50%;
 	float: left;
 	margin-right: 30px;
-	z-index: 1000;
 	top: 15px;
+	width: 50%;
+	z-index: 1000;
 }
 #encabezado nav ul{
-	list-style: none;
 	border-radius: 10px;
+	list-style: none;
 }
 #encabezado nav ul li{
 	display: inline-block;
-	position: relative;
 	padding: 10px 2px;
+	position: relative;
 	box-shadow: 0px 0 #2D9DC6 inset;
 	-webkit-transition: all 0.5s ;
 	-o-transition: all 0.5s ;
@@ -55,34 +55,34 @@
 }
 #encabezado nav ul li a{
 	color: #FFFFFF;
-	font-size: 17px;
 	display: inline-block;
-	text-decoration: none;
-	margin-right: 0px;
+	font-size: 17px;
 	margin-left: 10px;
+	margin-right: 0px;
+	text-decoration: none;
 }
 #encabezado nav ul li a span{
 	margin-right: 10px;
 }
 #encabezado nav ul li .children{
-	display: none;
 	background: #011826;
 	color: #FFFFFF;
+	display: none;
+	padding: 5px;
 	position: absolute;
 	width: 370px;
 	z-index: 1000;
-	padding: 5px;
 }
 #encabezado nav ul li .children li{
+	border-bottom: 1px solid rgba(255,255,255,.5);
 	display: block;
 	overflow: hidden;
-	border-bottom: 1px solid rgba(255,255,255,.5);
 }
 #encabezado nav ul li .children li a{
 	display: block;
 }
 .icon-grid, .icon-search, .icon-bell, .icon-graph, .icon-user{
-		font-size: 30px;
+	font-size: 30px;
 }
 .boton_menu, .boton_menu_lateral{
 	display: none;
@@ -91,24 +91,24 @@
 
 /*Estilo de menu_izquierda para la pagina en general*/
 #menu_izquierda{
-	width:200px;
 	float: left;
+	width:200px;
 }
 #menu_left nav{
 	background: #023859;
-	margin-right: 30px;
-	z-index: 900;
-	width: 100%;
 	float: left;	
+	margin-right: 30px;
+	width: 100%;
+	z-index: 900;
 }
 #menu_left nav ul{
-	list-style: none;
 	border-radius: 10px;
+	list-style: none;
 }
 #menu_left nav ul li{
 	display: block;
-	position: relative;
 	padding: 10px 2px;
+	position: relative;
 	box-shadow: 0px 0 #2D9DC6 inset;
 	-webkit-transition: all 0.5s ;
 	-o-transition: all 0.5s ;
@@ -119,11 +119,11 @@
 }
 #menu_left nav ul li a{
 	color: #FFFFFF;
-	font-size: 17px;
 	display: inline-block;
-	text-decoration: none;
-	margin-right: 0px;
+	font-size: 17px;
 	margin-left: 10px;
+	margin-right: 0px;
+	text-decoration: none;
 }
 #menu_left nav ul li a span{
 	margin-right: 10px;
@@ -132,18 +132,18 @@
 	/*display: block;*/
 }
 #menu_left nav ul li .children{
-	display: none;
 	background: #011826;
-	position: relative;
 	color: #FFFFFF;
+	display: none;
+	padding: 5px;
+	position: relative;
 	width: 250px;
 	z-index: 1000;
-	padding: 5px;
 }
 #menu_left nav ul li .children li{
+	border-bottom: 1px solid rgba(255,255,255,.5);
 	display: block;
 	overflow: hidden;
-	border-bottom: 1px solid rgba(255,255,255,.5);
 	padding: 10px;
 }
 #menu_left nav ul li .children li a{
@@ -154,10 +154,10 @@
 }
 .caret{
 	position: absolute;
-    top: 10px;
-    right: 5px;
     font-size: 15px;
     font-weight:bold;
+    right: 5px;
+    top: 10px;
 }
 
 /*Fin estilo de menu_izquierda para la pagina en general*/
@@ -184,93 +184,93 @@ body{
 		padding-top:120px;
 	}
 	#encabezado{
-		top: 0;
 		background-color: #252932;
-		z-index: 1000;
 		color: #FFFFFF;
-		width: 100%;
 		height: 80px;
 		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 1000;
 	}
 	#encabezado .logo {
-		top: 0;
 		font-size: 30px;
 		line-height: 60px;
-		vertical-align: middle;
-		text-align: center;
-		width: 100%;
 		position: fixed;
+		text-align: center;
+		top: 0;
+		vertical-align: middle;
+		width: 100%;
 		z-index: 1000;
 	}
 	.boton_menu{
+		background: #023859;
 		display: block;
-		width: 50%;
 		position: fixed;
 		top: 60px;
-		background: #023859;
+		width: 50%;
 	}
 	.boton_menu .bt-menu{
-		display: block;
-		padding: 15px;
 		color: #FFFFFF;
-		overflow: hidden;
+		display: block;
 		font-size: 15px;
 		font-weight: bold;
+		overflow: hidden;
+		padding: 15px;
 		text-decoration: none;
 	}
 	.boton_menu_lateral{
+		background: #023859;
 		display: block;
-		width: 50%;
+		margin-left: 50%;
 		position: fixed;
 		top: 60px;
-		background: #023859;
-		margin-left: 50%;
+		width: 50%;
 	}
 	.boton_menu_lateral .bt-menu{
-		display: block;
-		padding: 15px;
 		color: #FFFFFF;
-		overflow: hidden;
+		display: block;
 		font-size: 15px;
 		font-weight: bold;
+		overflow: hidden;
+		padding: 15px;
 		text-decoration: none;
 	}
 	#encabezado nav{
-		top:104px;
 		background: #023859;
-		width: 80%;
 		height: calc(100% - 120px);
-		position: fixed;
-		right: 100%;
 		margin: 0;
 		overflow: scroll;
+		position: fixed;
+		right: 100%;
+		top:104px;
+		width: 80%;
 	}
 	#encabezado nav ul li a{
 		display: inline-block;
 	}
 	#encabezado nav ul li .children{
-		width: 100%;
 		position: relative;
+		width: 100%;
 	}
 	#encabezado nav ul li:hover .children{
 		display: none;
 	}
 	#menu_left nav{
-		top: 104px;
 		background: #023859;
-		width: 80%;
 		height: calc(100% - 120px);
-		position: fixed;
-		right: 100%;
 		margin: 0;
 		overflow: scroll;
+		position: fixed;
+		right: 100%;
+		top: 104px;
+		width: 80%;
 	}
 	#menu_left nav ul li a{
 		display: inline-block;
 	}
 	#menu_left nav ul li .children{
-		width: 100%;
 		position: relative;
+		width: 100%;
 	}
 	#menu_left nav ul li .children li a{
 		margin-left: 20px;
@@ -279,16 +279,15 @@ body{
 		display: none;
 	}
 	.caret{
-	position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 30px;
-    
+		position: absolute;
+	    font-size: 30px;
+	    right: 10px;
+	    top: 10px;
 	}
 /* Desde aqui es el estilo para móviles del contenido*/
 	#contenido{
-	 	width: 100%;
 	 	text-align: center;
+	 	width: 100%;
 	}
 /* Hasta aqui es el estilo para móviles del contenido*/
 }

@@ -1,9 +1,11 @@
 /*Script para buscador contactos*/
 $(function buscador_remitente(){
 	$('#search_remitente').focus();
+/*
 	$('#formulario_remitente_radicacion_entrada').submit(function(e){
 		e.preventDefault();
 	});
+*/
 	$('#search_remitente').keyup(function buscador_remitente(){
 		var envio2 = $('#search_remitente').val();
 
@@ -16,16 +18,13 @@ $(function buscador_remitente(){
 			//data: ('search_remitente='+envio2, 'permiso='+permiso),
 			success: function(resp){
 				if(resp!=""){
-					$('#resultados').html(resp);
+					$('#sugerencias_remitente').html(resp);
 				}
 			}
 		})
 	})
 	$('#nombre_contacto').keyup(function buscador_remitente(){
 		var nombre_contacto = $('#nombre_contacto').val();
-
-//		$('#logo').html('<h2>Radicación de Entrada</h2>');
-//		$('#resultados').html('<img src="imagenes/loading.gif" alt="" />');
 
 		$.ajax({
 			type: 'GET',
@@ -58,11 +57,11 @@ $(function buscador_remitente(){
 /*Fin script para buscador contactos*/
 /*Funciones para desplegar ventana modal contacto*/
 function abrirVentanaAgregarContacto(){
-	$(".agregar_contacto").slideDown("slow");
+	$("#ventana_agregar_contacto").slideDown("slow");
 	$('#nombre_contacto').focus();
 }
 function cerrarVentanaAgregarContacto(){
-	$(".agregar_contacto").slideUp("slow");
+	$("#ventana_agregar_contacto").slideUp("slow");
 	$("#contenido").load("../radicacion_entrada/index_entrada.php");
 }
 function abrir_ventana_modifica_remitente(){
@@ -81,14 +80,21 @@ function cargar_formulario_radicacion_entrada(nombre_contacto,nit_contacto,ubica
 	$('#contenido').load('radicacion_entrada/entrada.php',{var1:nombre_contacto, var2:nit_contacto, var3:ubicacion_contacto, var4:direccion_contacto, var5:telefono_contacto, var6:mail_contacto, var7:representante_legal, var8:codigo_contacto})
 }
 /*Funciones para dejar input en mayusculas y eliminar los espacios*/
-function nombre_mayusculas() {
-	var x =$('#nombre_contacto').val();
-	$('#nombre_contacto').val(x.toUpperCase()); 
-}
+
 function espacios_nit(){
 	var str = $('#nit_contacto').val();
 	str = str.replace('-','',str);
-	$('#nit_contacto').val(str.replace(/\s/g, ''));
+	str = str.replace('°','',str);
+	str = str.replace(/\s/g, '');
+
+	$('#nit_contacto').val(str.toUpperCase());
+}
+function espacios_direccion(){
+	var str = $('#direccion_contacto').val();
+	str = str.replace('-','',str);
+	str = str.replace('°','',str);
+	
+	$('#direccion_contacto').val(str.toUpperCase());
 }
 /*Fin funciones para dejar input en mayusculas y eliminar los espacios*/
 /*Fin funciones para cargar datos en formulario nuevo contacto*/

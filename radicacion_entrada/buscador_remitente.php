@@ -14,9 +14,9 @@ voy a mostrar.*/
 
 		if(isset($_GET['search_remitente'])){
 			$busca_contactos = $_GET['search_remitente'];
-			$consulta = "SELECT * FROM contactos WHERE UPPER(nombre_contacto)
-			LIKE UPPER('%".$busca_contactos."%') or nit_contacto LIKE 
-			UPPER('%".$busca_contactos."%')	order by nombre_contacto limit 10";
+			$consulta = "SELECT * FROM contactos WHERE UPPER(nombre_contacto) LIKE UPPER('%".$busca_contactos."%') 
+			or nit_contacto LIKE UPPER('%".$busca_contactos."%') order by nombre_contacto limit 10";
+			
 			$fila = pg_query($conectado,$consulta);
 	/*Calcula el numero de registros que genera la consulta anterior.*/
 		$registros= pg_num_rows($fila);
@@ -37,29 +37,29 @@ voy a mostrar.*/
 						$codigo_contacto = $linea['codigo_contacto'];
 						$fecha_creacion_usuario = $linea['fecha_creacion'];
 
-					echo "<div class='art'>"
+					echo "<div class='sugerencia_contacto'>"
 					/*Aqui defino cuál va a ser el comportamiento al dar clic sobre el resultado obtenido desde el "a href"*/;
 
 						echo "<a href=\"javascript:cargar_formulario_radicacion_entrada('$nombre_contacto','$nit_contacto','$ubicacion_contacto','$direccion_contacto','$telefono_contacto','$mail_contacto','$representante_legal', '$codigo_contacto')\">";
 							echo'	<span class="titulo">
 										<strong>'
-										.$nombre_contacto.'
-										</strong>'." (".
-									 	$nit_contacto.") ".
+											.$nombre_contacto.'
+										</strong>'." ("
+										.$nit_contacto.") ".
 									"</span>";
-							/*Etiqueta span para que el nombre del pais y continente tenga otro formato*/
+					/*Etiqueta span para que el nombre del pais y continente tenga otro formato*/
 								echo'<br/><span class="subtitulo">'
 										.$ubicacion_contacto." / ".
 										 $direccion_contacto." / Telefono : ".
 										 $telefono_contacto." / ".
 										 $mail_contacto."<br/>".
-							/*Funcion php para traducir la fecha (January->Enero)*/
+					/*Funcion php para traducir la fecha (January->Enero)*/
 										 "Creado el "; setlocale(LC_TIME, "es_CO.UTF-8");
 										 echo strftime("%A %d de %B del %Y");
-	 						/*Fin funcion php para traducir la fecha (January->Enero)*/
+					/*Fin funcion php para traducir la fecha (January->Enero)*/
 										 echo " por $creador_contacto".
 									"</span>";
-						/*Fin etiqueta span para que el nombre del pais y continente tenga otro formato*/
+					/*Fin etiqueta span para que el nombre del pais y continente tenga otro formato*/
 						echo "</a>";
 					/*Hasta aqui debe ir la etiqueta "a href" para que cuando haga clic en cada uno de los resultados*/
 					echo "</div>";//cierra div class='resultado_municipio'(art)

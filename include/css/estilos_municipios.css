@@ -1,63 +1,64 @@
 
 .container{
-	width:100%;
-	min-height: auto;
-	margin: auto;
-	padding: 20px;
 	background-color: #FFFFFF;
 	border: solid 1px #CCC;
+	margin: auto;
+	min-height: auto;
+	padding: 20px;
+	width:100%;
 }
 .form input{
-	width: 80%;
 	padding: 6px;
+	width: 80%;
 }
-#ventana{
-	display: none;
-	width: 100%;
-	height: 100%;
-	color: #FFFFFF;
-	position: fixed;
+#ventana{/*Formato de la ventana modal de "ventana"*/
 	background-image: url(../../imagenes/bg-modal.png);
-	top: 0;
+	color: #FFFFFF;
+	display: none;
+	height: 100%;
 	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
 }
 #ventana .form{
-	width: auto;
-	height: auto;
-	padding: 25px;
 	background-color: #FFFFFF;
-	color: #666;
-	top: 20%;
-	left: 30%;
-	position: absolute;
-	text-align: center;
 	border-radius: 20px;
+	color: #666;
+	height: auto;
+	left: 30%;
+	padding: 25px;
+	position: absolute;
+	right: 30%;
+	text-align: center;
+	top: 20%;
+	width: auto;
 }
 #ventana .form table{
 	text-align: left;
 	width: 100%;
 }
 #ventana2{
-	display: none;
-	width: 100%;
-	height: 100%;
-	color: #FFFFFF;
-	position: fixed;
 	background-image: url(../../imagenes/bg-modal.png);
-	top: 0;
+	color: #FFFFFF;
+	display: none;
+	height: 100%;
 	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
 }
 #ventana2 .form{
-	width: auto;
-	height: auto;
-	padding: 25px;
 	background-color: #FFFFFF;
+	border-radius: 20px;
 	color: #666;
-	top: 25%;
+	height: auto;
 	left: 25%;
+	padding: 25px;
 	position: absolute;
 	text-align: center;
-	border-radius: 20px;
+	top: 25%;
+	width: auto;
 }
 #ventana2 .form table{
 	text-align: left;
@@ -78,44 +79,44 @@
 	color: #FFFFFF;
 }
 #desplegable_resultados{
-	width: 90%;
 	min-height: 100px;
+	width: 90%;
 }
 .center{
 	text-align: center;
 }
 .footer{
-	font-size: 14px;
-	color: #252932;
 	clear: both;
+	color: #252932;
+	font-size: 14px;
 }
 
 /*Se inicia estilos para el resultado de buscador_municipios.php*/
 .art{
-	margin-bottom: 2px;
 	background-color: #F1F1F1;
-	padding: 5px;
 	border-bottom: 1px solid rgba(255,255,255,.5);
-	display: block;
-	width: auto;
 	border-radius: 10px;
-}
-.art a{
-	text-decoration: none;
-	display: block;	
-}
-.art span{
-	font-size: 15px;
+	display: block;
+	margin-bottom: 2px;
+	margin-left: 30px;
+	padding: 5px;
+	width: auto;
 }
 .art:hover{
 	box-shadow: 10000px 0 #2D9DC6 inset;
 	color: #FFFFFF;
 }
-.ver_creador{
-	font-size: 11px;
-	float: auto;
-	display: inline-block;
+.art a{
+	display: block;	
+	text-decoration: none;
 }
+.art a:hover{
+	color: #FFFFFF;
+}
+.art span{
+	font-size: 15px;
+}
+
 /*Fin de estilos para el resultado de buscador_municipios.php*/
 
 /*Se inicia estilos al form cuando es movil o ventana menos de 768px
@@ -123,59 +124,60 @@
 @media screen and (max-width: 768px){
 
 	#ventana{
-		width: 100%;
-		height: auto; /*Si height es 100% hace la animacion de display hacia abajo*/
 		color: #FFFFFF;
+		display: none;
+		height: auto; /*Si height es 100% hace la animacion de display hacia abajo*/
+		left: 0;
 		position: relative;
 		top: 0;
-		left: 0;
-		display: none;
+		width: 100%;
 	}
 	#ventana .form{
-		color:#FFFFFF;
-		width: 90%;
-		height: auto;
-		padding: 5px;
-		top: 2px;
-		left: 2px;
-		position: absolute;
-		border-radius: 20px;
 		background: #585858;
+		border-radius: 20px;
+		color:#FFFFFF;
+		height: auto;
+		left: 2px;
+		padding: 5px;
+		position: absolute;
+		top: 2px;
+		width: 95%;
 	}
 	#ventana2{
-		width: 100%;
-		height: auto; /*Si height es 100% hace la animacion de display hacia abajo*/
 		color: #FFFFFF;
+		display: none;
+		height: auto; /*Si height es 100% hace la animacion de display hacia abajo*/
+		left: 0;
 		position: relative;
 		top: 0;
-		left: 0;
-		display: none;
+		width: 100%;
 	}
 	#ventana2 .form{
-		color:#FFFFFF;
-		width: 90%;
-		height: auto;
-		padding: 5px;
-		top: 2px;
-		left: 2px;
-		position: absolute;
-		border-radius: 20px;
 		background: #585858;
+		border-radius: 20px;
+		color:#FFFFFF;
+		height: auto;
+		left: 2px;
+		padding: 5px;
+		position: absolute;
+		top: 2px;
+		width: 90%;
 	}
 }
+/* Fin estilos al form cuando es movil o ventana menos de 768px de principal3.php*/	
 .errores{
+	background: red;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	color: #FFFFFF;
+	display: none;
+	float: center;
+	font-size: 12px;
+	padding: 5px;
+	position: relative;	
+	text-align: center;
 	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.3);
 	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.3);
 	-ms-box-shadow: 0 0 10px rgba(0,0,0,0.3);
 	-o-box-shadow: 0 0 10px rgba(0,0,0,0.3);
-	box-shadow: 0 0 10px rgba(0,0,0,0.3);
-	background: red;
-	color: #FFFFFF;
-	font-size: 12px;
-	position: relative;	
-	padding: 5px;
-	border-radius: 10px;
-	float: center;
-	display: none;
-	text-align: center;
 }
