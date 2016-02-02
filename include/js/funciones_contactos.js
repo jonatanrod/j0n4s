@@ -6,6 +6,7 @@ $(function buscador_remitente(){
 		e.preventDefault();
 	});
 */
+/*Funcion para remitente desde formulario principal*/
 	$('#search_remitente').keyup(function buscador_remitente(){
 		var envio2 = $('#search_remitente').val();
 
@@ -13,9 +14,11 @@ $(function buscador_remitente(){
 		$('#resultados').html('<img src="imagenes/loading.gif" alt="" />');
 
 		$.ajax({
-			type: 'GET',
-			url:  'radicacion_entrada/buscador_remitente.php?search_remitente='+envio2+'&desde_formulario='+'2',
-			//data: ('search_remitente='+envio2, 'permiso='+permiso),
+			type: 'POST',
+			url:  'radicacion_entrada/buscador_remitente.php' ,
+			data: (
+				'search_remitente='+envio2+'&desde_formulario=2'
+			),
 			success: function(resp){
 				if(resp!=""){
 					$('#sugerencias_remitente').html(resp);
@@ -23,13 +26,17 @@ $(function buscador_remitente(){
 			}
 		})
 	})
+/*Funcion para remitente desde nombre completo*/
 	$('#nombre_contacto').keyup(function buscador_remitente(){
 		var nombre_contacto = $('#nombre_contacto').val();
+		$("#error_nombre_contacto").fadeOut();
 
 		$.ajax({
-			type: 'GET',
-			url:  'radicacion_entrada/buscador_remitente.php?search_remitente='+nombre_contacto+'&desde_formulario='+'1',
-			//data: ('search_remitente='+nombre_contacto, 'permiso='+permiso),
+			type: 'POST',
+			url:  'radicacion_entrada/buscador_remitente.php',
+			data: (
+				'search_remitente='+nombre_contacto+'&desde_formulario=1'
+			),
 			success: function(resp){
 				if(resp!=""){
 					$('#sugerencia_nombre_contacto').html(resp);
@@ -37,8 +44,10 @@ $(function buscador_remitente(){
 			}
 		})
 	})
+/*Funcion para remitente desde nit contacto*/
 	$('#nit_contacto').keyup(function buscador_remitente(){
 		var nit_contacto = $('#nit_contacto').val();
+		$("#error_nit_contacto").fadeOut();
 
 //		$('#logo').html('<h2>Radicación de Entrada</h2>');
 //		$('#resultados').html('<img src="imagenes/loading.gif" alt="" />');
@@ -49,6 +58,26 @@ $(function buscador_remitente(){
 			success: function(resp){
 				if(resp!=""){
 					$('#sugerencia_nit_contacto').html(resp);
+				}
+			}
+		})
+	})
+/*Funcion para ubicacion desde ubicacion_contacto*/
+	$('#ubicacion_contacto').keyup(function buscador_remitente(){
+		var search_muni = $('#ubicacion_contacto').val();
+//		$("#error_ubicacion_contacto").fadeOut();
+
+		$('#sugerencia_ubicacion').slideDown("fast");
+
+//		$('#logo').html('<h2>Radicación de Entrada</h2>');
+//		$('#resultados').html('<img src="imagenes/loading.gif" alt="" />');
+		$.ajax({
+			type: 'POST',
+			url:  'radicacion_entrada/buscador_remitente.php',
+			data: ('search_muni='+search_muni+'&formulario_nuevo_contacto=1'),
+			success: function(resp){
+				if(resp!=""){
+					$('#sugerencia_ubicacion').html(resp);
 				}
 			}
 		})
@@ -64,6 +93,7 @@ function cerrarVentanaAgregarContacto(){
 	$("#ventana_agregar_contacto").slideUp("slow");
 	$("#contenido").load("../radicacion_entrada/index_entrada.php");
 }
+/*
 function abrir_ventana_modifica_remitente(){
 	$(".ventana").slideDown("slow");
 }
@@ -79,12 +109,28 @@ function cargar_formulario_radicacion_entrada(nombre_contacto,nit_contacto,ubica
 {
 	$('#contenido').load('radicacion_entrada/entrada.php',{var1:nombre_contacto, var2:nit_contacto, var3:ubicacion_contacto, var4:direccion_contacto, var5:telefono_contacto, var6:mail_contacto, var7:representante_legal, var8:codigo_contacto})
 }
+function cargar_valor_municipio(nombre_municipio,nombre_departamento,nombre_pais,nombre_continente){
+	$('#ubicacion_contacto').val(nombre_municipio+'('+nombre_departamento+') '+nombre_pais+'-'+nombre_continente)
+	$('#sugerencia_ubicacion').slideUp("fast");
+}
+/*Carga el administrador de municipios*/
+function carga_administrador_municipios() {
+	$("#contenido").load("admin_muni/index_municipios.php");
+	
+	$('.menu_superior').animate({
+			left:'-100%'
+	});
+};
+/*Fin carga el administrador de municipios*/
 /*Funciones para dejar input en mayusculas y eliminar los espacios*/
 
 function espacios_nit(){
 	var str = $('#nit_contacto').val();
 	str = str.replace('-','',str);
 	str = str.replace('°','',str);
+	str = str.replace('#','',str);
+	str = str.replace("'","",str);	
+	str = str.replace(',','',str);
 	str = str.replace(/\s/g, '');
 
 	$('#nit_contacto').val(str.toUpperCase());
@@ -93,6 +139,10 @@ function espacios_direccion(){
 	var str = $('#direccion_contacto').val();
 	str = str.replace('-','',str);
 	str = str.replace('°','',str);
+	str = str.replace('#','',str);
+	str = str.replace("'","",str);	
+	str = str.replace('|','',str);	
+	str = str.replace(',','',str);
 	
 	$('#direccion_contacto').val(str.toUpperCase());
 }
@@ -120,7 +170,6 @@ function grabar_contacto(){
 
 		var tamano_ubicacion = ubicacion_contacto.length;
 
-
 		if(nombre_contacto== ""){
 			$("#error_nombre_contacto").fadeIn();
 			return false;
@@ -132,21 +181,15 @@ function grabar_contacto(){
 			}else{
 				$("#error_nit_contacto").fadeOut();
 				if(ubicacion_contacto==""){
-					$("#error_nit_contacto").fadeOut();
-					var ubicacion_contacto = "BOGOTA";
-					alert(ubicacion_contacto);
-					return false;
-								
-				}else if(tamaño_ubicacion>0 && tamano_ubicacion<10){
-					alert(tamano_ubicacion);
+					$("#error_ubicacion_contacto").fadeIn();
 					return false;
 				}else{
 					$('#error_ubicacion_contacto').fadeOut();
 					if(direccion_contacto==""){
-						$("#error_direccion").fadeOut();
+						$("#error_direccion").fadeIn();
 						return false;
 					}else{
-						$("#error_nit_contacto").fadeOut();
+						$('#error_direccion').fadeOut();
 					}
 				}
 			}
@@ -172,9 +215,7 @@ function enviar_modificacion_contacto(){
 				$("#error_nit_contacto").fadeOut();
 				if(ubicacion_contacto==""){
 					$('#error_ubicacion_contacto').fadeIn();
-						var ubicacion_contacto = "BOGOTA"
-						alert(ubicacion_contacto);
-
+						
 					//Aqui debo corregir el comportamiento
 					// de la validación geográfica del contacto. Siempre tiene un valor, 
 					//entonces hay que definir un comportamiento particular

@@ -42,11 +42,12 @@ require_once('../login/conexion.php');?>
 								</tr>
 								<tr>
 									<td>Ubicación Contacto :</td>
-									<td class ="celda"><input type="text" placeholder="BOGOTA, D.C. (BOGOTA) COLOMBIA - AMERICA" id="ubicacion_contacto" onkeyup="javascript:this.value=this.value.toUpperCase();" >
+									<td class ="celda"><input type="text" value="BOGOTA(D.C.) COLOMBIA-AMERICA" id="ubicacion_contacto" onkeyup="javascript:this.value=this.value.toUpperCase();" >
 										<div id="sugerencia_ubicacion"></div>
-										<div id="error_ubicacion_contacto" class="errores">La ubicación del contacto que ha digitado no es 
-											válida. Este campo es obligatorio. En caso que no encuentre una ubicación correcta, comuníquese
-											por favor con el administrador del sistema.</div>
+										<div id="error_ubicacion_contacto" class="errores">
+											No se han encontrado resultados. Si desea ingresar un nuevo municipio haga click 
+											<a href='javascript:carga_administrador_municipios();'>aqui</a>
+										</div>
 		<!--Desde aqui el div que contiene el formulario para agregar municipios-->
 										<div class="ventana">
 											<div class="form">
@@ -69,7 +70,8 @@ require_once('../login/conexion.php');?>
 								</tr>
 								<tr>
 									<td>Correo Electrónico del Contacto :</td>
-									<td class ="celda"><input type="text" placeholder="Digite E-mail" id="email_contacto" onkeyup="javascript:this.value=this.value.toUpperCase();">
+									<td class ="celda">
+										<input type="email" placeholder="Digite E-mail" id="email_contacto" onkeyup="javascript:this.value=this.value.toUpperCase();" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required/>
 										<!-- <div id="error_municipio" class="errores">El nombre del municipio es obligatorio</div> -->
 									</td>
 								</tr>
@@ -89,15 +91,65 @@ require_once('../login/conexion.php');?>
 			</div><!--Cierra .formulario_agregar_contactos -->
 		</div><!--Cierra #ventana_agregar_contacto lo que antes era <ventana> -->
 <!--Hasta aqui el div que contiene el formulario para agregar contacto-->
+<!--Hasta aqui el div que contiene el formulario para agregar municipios-->
+		<div id="ventana_crear_municipios">
+			<div class="form">
+				<div class="cerrar"><a href='javascript:cerrar_ventana_crear_municipios();'>Cerrar X</a></div>
+				<h1>Formulario Agregar Nuevo Municipio</h1>
+				<hr>
+				<form action="#" method="post" id ="formulario_agregar_municipio" name ="formulario_agregar_municipio" >
+					<table>
+						<tr>
+							<td>Continente : </td>
+							<td>
+								<select name="continente" id="continente" onchange="limpia_formulario_agregar()">
+									<option value="AFRICA">Africa</option>
+									<option value="AMERICA" selected="selected">America</option>
+									<option value="ASIA">Asia</option>
+									<option value="EUROPA">Europa</option>
+									<option value="OCEANIA">Oceania</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>País :</td>
+							<td><input type="text" value="Colombia" name="pais" id="pais">
+								<div id="error_pais" class="errores">El nombre del país es obligatorio</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Departamento :</td>
+							<td><input type="text" placeholder="Digite Departamento" name="departamento" id="departamento">
+								<div id="error_departamento" class="errores">El nombre del departamento es obligatorio</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Municipio :</td>
+							<td><input type="text" placeholder="Digite Municipio" name="municipio" id="municipio">
+								<div id="error_municipio" class="errores">El nombre del municipio es obligatorio</div>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="submit" value="Grabar Municipio" id="bEnviar" class="boton_enviar"></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+<!--Hasta aqui el div que contiene el formulario para agregar municipios-->
+
+
+
+
+
 <!--Desde aqui los div que se muestran por default al cargar index_entrada.php-->
 		<div class="center" id="logo">
 			<h1>Módulo de radicación de entrada</h1>		
 			<img src="imagenes/jonasLogo.png" width="200" alt="Jonas SGD" title="Logo Jonas	">	
 		</div>
-		<div class="form center">
-		<!--	<form action="" method="post" name="formulario_remitente_radicacion_entrada" id="formulario_remitente_radicacion_entrada" class="form">-->
+		<div class="formulario_agregar_contactos center">
 				Remitente : <input type="text" name ="search_remitente" id="search_remitente">
-			<!--</form>-->
 		</div>
 		<div id="sugerencias_remitente"></div><br/> 
 		<div class="footer center">
