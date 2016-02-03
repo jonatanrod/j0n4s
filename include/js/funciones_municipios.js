@@ -23,6 +23,7 @@ $(function buscador_municipios(){
 	})
 })
 /*Fin script para buscador del administrador de municipios*/
+/*Función para cargar datos al formulario de modificación de Municipio*/
 function cargar_modifica_municipio(nombre_municipio,nombre_departamento,nombre_pais,nombre_continente){
 	$('#mod_continente').val(nombre_continente);
 	$('#mod_pais').val(nombre_pais);

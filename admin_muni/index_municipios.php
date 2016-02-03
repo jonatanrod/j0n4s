@@ -112,7 +112,7 @@
 <!--Hasta aqui el div que contiene el formulario para modificar municipios-->
 
 		<div class="center" id="logo">
-			Configuración Paises, Departamentos y Municipios
+			<h1>Configuración Paises, Departamentos y Municipios</h1>
 			<br>
 			<img src="imagenes/jonasLogo.png" width="200" alt="Jonas SGD" title="Logo Jonas	">
 		</div>

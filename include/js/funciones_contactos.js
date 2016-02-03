@@ -91,15 +91,16 @@ function abrirVentanaAgregarContacto(){
 }
 function cerrarVentanaAgregarContacto(){
 	$("#ventana_agregar_contacto").slideUp("slow");
-	$("#contenido").load("../radicacion_entrada/index_entrada.php");
+	$("#contenido").load("radicacion_entrada/index_entrada.php");
 }
-/*
 function abrir_ventana_modifica_remitente(){
-	$(".ventana").slideDown("slow");
+	$("#ventana_modificar_remitente").slideDown("slow");
 }
 function cerrar_ventana_modifica_remitente(){
-	$(".ventana").slideUp("slow");
+	$("#ventana_modificar_remitente").slideUp("slow");
 }
+
+/*
 function cerrar_ventana_form_agregar_municipios(){
 	$(".ventana").slideUp("slow");//Falta definir que hace despues de subir la ventana. (autocomplete del campo)
 }
@@ -112,6 +113,7 @@ function cargar_formulario_radicacion_entrada(nombre_contacto,nit_contacto,ubica
 function cargar_valor_municipio(nombre_municipio,nombre_departamento,nombre_pais,nombre_continente){
 	$('#ubicacion_contacto').val(nombre_municipio+'('+nombre_departamento+') '+nombre_pais+'-'+nombre_continente)
 	$('#sugerencia_ubicacion').slideUp("fast");
+	$('#error_ubicacion_contacto').slideUp("fast");
 }
 /*Carga el administrador de municipios*/
 function carga_administrador_municipios() {
@@ -196,12 +198,14 @@ function grabar_contacto(){
 		} 
 	})
 }	
+
 function enviar_modificacion_contacto(){
 	$("#enviar_modificacion_contacto").click(function enviar_modificacion_contacto(){
 		var nombre_contacto = $('#nombre_contacto').val()
 		var nit_contacto = $('#nit_contacto').val()
 		var ubicacion_contacto =$('#ubicacion_contacto').val()
 		var direccion_contacto =$('#direccion_contacto').val()
+		var email=$('#email_contacto').val()
 
 		if(nombre_contacto== ""){
 			$("#error_nombre_contacto").fadeIn();
@@ -226,6 +230,12 @@ function enviar_modificacion_contacto(){
 						return false;
 					}else{
 						$("#error_direccion_contacto").fadeOut();
+						if(email==""){
+							$("#error_email_contacto").fadeIn();
+							return false;
+						}else{
+							$("#error_email_contacto").fadeOut();
+						}
 					}
 
 					buscador_municipios_para_contacto();

@@ -13,8 +13,8 @@ require_once('../login/conexion.php');?>
 <body>
 <!--Desde aqui el div que contiene el formulario para agregar contacto-->
 	<div class="container">
-		<div id="ventana_agregar_contacto"><!-- ventana-->
-			<div class="formulario_agregar_contactos">
+		<div class="ventana_modal" id="ventana_agregar_contacto"><!-- ventana-->
+			<div class="formulario_modal">
 				<div class="cerrar"><a href='javascript:cerrarVentanaAgregarContacto();'>Cerrar X</a></div>
 						<p>
 							<h1>Formulario Agregar Nuevo Contacto</h1>
@@ -22,11 +22,12 @@ require_once('../login/conexion.php');?>
 						</p>
 					<hr>
 					<center>	
-						<form id ="form_datos_contacto" action="">
+						<form method="post" id ="form_datos_contacto" action="radicacion_entrada/query_contactos.php">
+							<input type="hidden" name="tipo_formulario" value="agregar_nuevo_contacto">
 							<table border ="0">
 								<tr>
 									<td>Nombre completo (Incluyendo Sigla) : </td>
-									<td class="celda"><input type="text" placeholder="Digite Nombre" id="nombre_contacto" onkeyup="javascript:this.value=this.value.toUpperCase();">
+									<td class="celda"><input type="text" placeholder="Digite Nombre" id="nombre_contacto" name="nombre_contacto" onkeyup="javascript:this.value=this.value.toUpperCase();">
 										<div id="sugerencia_nombre_contacto" class="sugerencia"></div>
 										<div id="error_nombre_contacto" class="errores">El nombre del contacto es obligatorio</div>
 										<div id="contacto_ya_existe" class="errores">El nombre del contacto ya existe, no es posible crear un nuevo contacto con éste nombre</div>
@@ -34,7 +35,7 @@ require_once('../login/conexion.php');?>
 								</tr>
 								<tr>
 									<td>NIT del contacto :</td>
-									<td class ="celda"><input type="text" placeholder="Digite NIT" id="nit_contacto" onkeyup="espacios_nit();">
+									<td class ="celda"><input type="text" placeholder="Digite NIT" id="nit_contacto" name="nit_contacto" onkeyup="espacios_nit();">
 										<div id="sugerencia_nit_contacto" class="sugerencia"></div>
 										<div id="error_nit_contacto" class="errores">El número de NIT es obligatorio</div>
 										<div id="nit_ya_existe" class="errores">El nombre del contacto ya existe, no es posible crear un nuevo contacto con éste NIT</div>
@@ -42,7 +43,7 @@ require_once('../login/conexion.php');?>
 								</tr>
 								<tr>
 									<td>Ubicación Contacto :</td>
-									<td class ="celda"><input type="text" value="BOGOTA(D.C.) COLOMBIA-AMERICA" id="ubicacion_contacto" onkeyup="javascript:this.value=this.value.toUpperCase();" >
+									<td class ="celda"><input type="text" value="BOGOTA(D.C.) COLOMBIA-AMERICA" id="ubicacion_contacto" name="ubicacion_contacto" onkeyup="javascript:this.value=this.value.toUpperCase();" >
 										<div id="sugerencia_ubicacion"></div>
 										<div id="error_ubicacion_contacto" class="errores">
 											No se han encontrado resultados. Si desea ingresar un nuevo municipio haga click 
@@ -58,26 +59,26 @@ require_once('../login/conexion.php');?>
 								</tr>
 								<tr>
 									<td class = "celda">Dirección del Contacto :</td>
-									<td class ="celda"><input type="text" placeholder="Digite Dirección" id="direccion_contacto" onkeyup="espacios_direccion();">
+									<td class ="celda"><input type="text" placeholder="Digite Dirección" id="direccion_contacto" name="direccion_contacto" onkeyup="espacios_direccion();">
 										<div id="error_direccion" class="errores">La dirección es obligatoria</div>
 									</td>
 								</tr>
 								<tr>
 									<td>Teléfono del Contacto :</td>
-									<td class ="celda"><input type="text" placeholder="Digite Teléfono" id="telefono_contacto">
+									<td class ="celda"><input type="text" placeholder="Digite Teléfono" id="telefono_contacto" name="telefono_contacto">
 										<div id="error_municipio" class="errores">El número de teléfono es obligatorio</div>
 									</td>
 								</tr>
 								<tr>
 									<td>Correo Electrónico del Contacto :</td>
 									<td class ="celda">
-										<input type="email" placeholder="Digite E-mail" id="email_contacto" onkeyup="javascript:this.value=this.value.toUpperCase();" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required/>
+										<input type="email" placeholder="Digite E-mail" id="email_contacto" name="email_contacto" onkeyup="javascript:this.value=this.value.toUpperCase();" required/>
 										<!-- <div id="error_municipio" class="errores">El nombre del municipio es obligatorio</div> -->
 									</td>
 								</tr>
 								<tr>
 									<td>Representante legal del Contacto :</td>
-									<td class="celda"><input type="text" placeholder="No aplica para Persona Natural" id="representante_legal_contacto" onkeyup="javascript:this.value=this.value.toUpperCase();">
+									<td class="celda"><input type="text" placeholder="No aplica para Persona Natural" id="representante_legal_contacto" name="representante_legal_contacto" onkeyup="javascript:this.value=this.value.toUpperCase();">
 										<!-- <div id="error_municipio" class="errores">El nombre del municipio es obligatorio</div> -->
 									</td>
 								</tr>
@@ -88,67 +89,16 @@ require_once('../login/conexion.php');?>
 						</form>
 					</center>
 				</div>
-			</div><!--Cierra .formulario_agregar_contactos -->
-		</div><!--Cierra #ventana_agregar_contacto lo que antes era <ventana> -->
+			</div><!--Cierra .formulario_modal -->
+		</div><!--Cierra #ventana_agregar_contacto -->
 <!--Hasta aqui el div que contiene el formulario para agregar contacto-->
-<!--Hasta aqui el div que contiene el formulario para agregar municipios-->
-		<div id="ventana_crear_municipios">
-			<div class="form">
-				<div class="cerrar"><a href='javascript:cerrar_ventana_crear_municipios();'>Cerrar X</a></div>
-				<h1>Formulario Agregar Nuevo Municipio</h1>
-				<hr>
-				<form action="#" method="post" id ="formulario_agregar_municipio" name ="formulario_agregar_municipio" >
-					<table>
-						<tr>
-							<td>Continente : </td>
-							<td>
-								<select name="continente" id="continente" onchange="limpia_formulario_agregar()">
-									<option value="AFRICA">Africa</option>
-									<option value="AMERICA" selected="selected">America</option>
-									<option value="ASIA">Asia</option>
-									<option value="EUROPA">Europa</option>
-									<option value="OCEANIA">Oceania</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td>País :</td>
-							<td><input type="text" value="Colombia" name="pais" id="pais">
-								<div id="error_pais" class="errores">El nombre del país es obligatorio</div>
-							</td>
-						</tr>
-						<tr>
-							<td>Departamento :</td>
-							<td><input type="text" placeholder="Digite Departamento" name="departamento" id="departamento">
-								<div id="error_departamento" class="errores">El nombre del departamento es obligatorio</div>
-							</td>
-						</tr>
-						<tr>
-							<td>Municipio :</td>
-							<td><input type="text" placeholder="Digite Municipio" name="municipio" id="municipio">
-								<div id="error_municipio" class="errores">El nombre del municipio es obligatorio</div>
-							</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td><input type="submit" value="Grabar Municipio" id="bEnviar" class="boton_enviar"></td>
-						</tr>
-					</table>
-				</form>
-			</div>
-		</div>
-<!--Hasta aqui el div que contiene el formulario para agregar municipios-->
-
-
-
-
 
 <!--Desde aqui los div que se muestran por default al cargar index_entrada.php-->
 		<div class="center" id="logo">
 			<h1>Módulo de radicación de entrada</h1>		
 			<img src="imagenes/jonasLogo.png" width="200" alt="Jonas SGD" title="Logo Jonas	">	
 		</div>
-		<div class="formulario_agregar_contactos center">
+		<div class="formulario_modal center">
 				Remitente : <input type="text" name ="search_remitente" id="search_remitente">
 		</div>
 		<div id="sugerencias_remitente"></div><br/> 

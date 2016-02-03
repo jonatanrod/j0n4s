@@ -45,8 +45,7 @@
 							}else{
 								echo "<a href=\"#\"> <script> alert('No, no hay Ahora formulario_nuevo_contacto es '+$desde_formulario);</script>";
 							}
-							//
-
+			
 						/*Aqui defino cuál va a ser el comportamiento al dar click sobre el 
 						resultado obtenido*/			
 							echo $nombre_municipio." (".

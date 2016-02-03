@@ -15,8 +15,7 @@
 		Por definir como lo voy a recuperar.*/
 
 		require_once('../login/conexion.php');
-		sleep(1);
-
+	
 /*Aqui defino la fecha de la transaccion*/
 		include "../include/genera_fecha.php";
 		$fecha_modificacion = $fecha_hoy;//$fecha_hoy es del formato "Jueves 28 de Enero de 2016"
@@ -73,7 +72,7 @@
 
 			if(pg_query($conectado,$query)){
 				echo "<script> alert('El municipio ha sido creado correctamente') 
-						enviar();
+						volver();
 					</script>";
 			}else{
 				echo "<script> Ocurrió un error al realizar la consulta, por favor revisa e intenta nuevamente.</script>";

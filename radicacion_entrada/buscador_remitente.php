@@ -7,6 +7,7 @@
 	<?php 
 		require_once('../login/conexion.php');//cambiar por ../login/conexion.php
 		$busca_contactos ='';
+		$usuario = 'Jonas';//Por definir como lo voy a recuperar.
 
 /*La variable $desde_formulario me define desde ajax a ver cual formulario estoy invocando para condicionar lo que 
 voy a mostrar.*/ 
@@ -54,11 +55,6 @@ voy a mostrar.*/
 										 $direccion_contacto." / Telefono : ".
 										 $telefono_contacto." / ".
 										 $mail_contacto."<br/>".
-					/*Funcion php para traducir la fecha (January->Enero)*/
-										 "Creado el "; setlocale(LC_TIME, "es_CO.UTF-8");
-										 echo strftime("%A %d de %B del %Y");
-					/*Fin funcion php para traducir la fecha (January->Enero)*/
-										 echo " por $creador_contacto".
 									"</span>";
 					/*Fin etiqueta span para que el nombre del pais y continente tenga otro formato*/
 						echo "</a>";
@@ -124,12 +120,6 @@ voy a mostrar.*/
 									$direccion_contacto." / Telefono : ".
 									$telefono_contacto." / ".
 									$mail_contacto."<br/>".
-				/*Funcion php para traducir la fecha (January->Enero)*/
-									"Creado el $fecha_creacion_usuario ";
-		/*							setlocale(LC_TIME, "es_CO.UTF-8");
-									echo strftime("%A %d de %B del %Y");
-	 	*/		/*Fin funcion php para traducir la fecha (January->Enero)*/
-									 echo " por $creador_contacto".
 								"</span>";
 				/*Fin etiqueta span para que el nombre del pais y continente tenga otro formato*/
 							echo "</a>";
@@ -187,8 +177,8 @@ voy a mostrar.*/
 				}while ($fila=pg_fetch_assoc($fila));
 			}elseif($registros>0 && $busca_muni==''){
 				echo "<div> Ingresa un parámetro de búsqueda<div>";
-			}elseif($busca_muni!='' && $registros<1){
-						echo "<div> No se han encontrado resultados. Si desea ingresar un nuevo municipio haga click 
+			}elseif($busca_muni!='' && $registros<1 && $busca_muni!='BOGOTA(D.C.) COLOMBIA-AMERICA'){
+						echo "<div> No se han encontrado resultados con el valor digitado. Si desea ingresar un nuevo municipio haga click 
 							<a href='javascript:carga_administrador_municipios();'>aqui</a> </div>";
 			}else{
 				if($registros<1 ){
@@ -209,46 +199,11 @@ voy a mostrar.*/
 					
 				}
 			}
-
-
-
-
-
-
 		}else{
 			echo "El sistema no esta recibiendo la variable correcta. Por favor comuniquese con el administrador del sistema.";
 		}	
 	/*Fin recorre el array generado e imprime uno a uno los resultados.*/	
 	
-	/* Isset de las variables que van a usarse en la consulta*/	
-		if(isset($_POST['nombre'])){
-			$nombre_contacto = strtoupper($_POST['pais']);
-		}
-		if(isset($_POST['departamento'])){
-			$departamento = strtoupper($_POST['departamento']);
-		}	
-		if(isset($_POST['municipio'])){
-			$municipio = strtoupper($_POST['municipio']);
-		}
-		setlocale(LC_TIME, "es_CO.UTF-8");
-		strftime("%A %d de %B del %Y");
-		$fecha_creacion= strftime("%A %d de %B del %Y");
-		//date('l jS \of F Y h:i:s A');
-		//echo "rrrrrrrrrrrrrrrr $fecha_creacion llllllllll";
-
-	$usuario = 'Jonas';//Por definir como lo voy a recuperar.
-
-	/* Fin isset de las variables que van a usarse en la consulta*/
-
-
-	$query ="INSERT INTO municipios (id_continente, nombre_continente, nombre_pais, 
-		nombre_departamento, nombre_municipio, fecha_creacion, creador_municipio) VALUES 
-		($id_continente, '$continente','$pais','$departamento','$municipio','$fecha_creacion','$usuario')";
-	//echo "HHHHHHHHHHHHHHHHHHHHH  $query HHHH $municipio_recibido HHHHHHHHHHHHHHHHH";
-	//$ejecuta_query = pg_query($conectado,$query);
-	
-	/*Hasta aqui inicio la interaccion con el formulario de insertar municipio*/
-
 	 ?>
 	 
  </body>
