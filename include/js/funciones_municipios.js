@@ -106,8 +106,50 @@ function limpia_formulario_agregar(){
 	$('#departamento').val("");
 	$('#municipio').val("");
 }
+function espacios_pais(){
+	var str = $('#pais').val();
+	str = str.replace('-','',str);
+	str = str.replace('°','',str);
+	str = str.replace('#','',str);
+	str = str.replace("/","",str);
+	str = str.replace("*","",str);
+	str = str.replace("'","",str);	
+	str = str.replace(',','',str);
+	str = str.replace(/\s/g, '');
+
+	$('#pais').val(str.toUpperCase());
+}
+function espacios_departamento(){
+	var str = $('#departamento').val();
+	str = str.replace('-','',str);
+	str = str.replace('°','',str);
+	str = str.replace('#','',str);
+	str = str.replace("/","",str);
+	str = str.replace("*","",str);
+	str = str.replace("'","",str);	
+	str = str.replace(',','',str);
+	str = str.replace(/\s/g, '');
+
+	$('#departamento').val(str.toUpperCase());
+}
+function espacios_municipio(){
+	var str = $('#municipio').val();
+	str = str.replace('-','',str);
+	str = str.replace('°','',str);
+	str = str.replace('#','',str);
+	str = str.replace("/","",str);
+	str = str.replace("*","",str);
+	str = str.replace("'","",str);	
+	str = str.replace(',','',str);
+	str = str.replace(/\s/g, '');
+
+	$('#municipio').val(str.toUpperCase());
+}
 /*Fin funciónes para limpiar el formulario*/
 
+function verificar_municipio(municipio){
+	alert("hola"+municipio)					//Linea de prueba
+}
 /*Validación que los campos de pais, departamento y municipio no estén vacíos 
 para agregar un municipio nuevo.*/
 $(document).ready(function validar_varios_municipio(){
@@ -135,6 +177,8 @@ $(document).ready(function validar_varios_municipio(){
 					return false;
 				}else{
 					$("#error_municipio").fadeOut();
+					verificar_municipio(municipio);		//Linea de prueba
+					return false;						//Linea de prueba
 				}
 			}		
 		}	

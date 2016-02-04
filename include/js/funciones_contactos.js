@@ -52,9 +52,10 @@ $(function buscador_remitente(){
 //		$('#logo').html('<h2>Radicación de Entrada</h2>');
 //		$('#resultados').html('<img src="imagenes/loading.gif" alt="" />');
 		$.ajax({
-			type: 'GET',
-			url:  'radicacion_entrada/buscador_remitente.php?search_nit='+nit_contacto,
-			//data: ('search_remitente='+nombre_contacto, 'permiso='+permiso),
+			type: 'POST',
+			url:  'radicacion_entrada/buscador_remitente.php',
+			data: ('search_nit='+nit_contacto+'&formulario_nuevo_contacto=1'),
+
 			success: function(resp){
 				if(resp!=""){
 					$('#sugerencia_nit_contacto').html(resp);
@@ -65,12 +66,9 @@ $(function buscador_remitente(){
 /*Funcion para ubicacion desde ubicacion_contacto*/
 	$('#ubicacion_contacto').keyup(function buscador_remitente(){
 		var search_muni = $('#ubicacion_contacto').val();
-//		$("#error_ubicacion_contacto").fadeOut();
 
 		$('#sugerencia_ubicacion').slideDown("fast");
 
-//		$('#logo').html('<h2>Radicación de Entrada</h2>');
-//		$('#resultados').html('<img src="imagenes/loading.gif" alt="" />');
 		$.ajax({
 			type: 'POST',
 			url:  'radicacion_entrada/buscador_remitente.php',
@@ -82,6 +80,58 @@ $(function buscador_remitente(){
 			}
 		})
 	})
+
+/*Funciones para el formulario de modificar datos de remitente*/
+	$('#nombre_contacto_mod').keyup(function buscador_remitente(){
+		var nombre_contacto_mod = $('#nombre_contacto_mod').val();
+
+		$('#sugerencia_nombre_contacto_mod').slideDown("fast");
+
+		$.ajax({
+			type: 'POST',
+			url:  'radicacion_entrada/buscador_remitente.php',
+			data: ('search_remitente='+nombre_contacto_mod+'&formulario_nuevo_contacto=1'),
+			success: function(resp){
+				if(resp!=""){
+					$('#sugerencia_nombre_contacto_mod').html(resp);
+				}
+			}
+		})
+	})
+/*Funcion para remitente desde nit contacto_mod*/
+	$('#nit_contacto_mod').keyup(function buscador_remitente(){
+		var nit_contacto_mod = $('#nit_contacto_mod').val();
+		$("#error_nit_contacto_mod").fadeOut();
+
+		$.ajax({
+			type: 'POST',
+			url:  'radicacion_entrada/buscador_remitente.php',
+			data: ('search_remitente='+nit_contacto_mod+'&formulario_nuevo_contacto=1'),			
+			success: function(resp){
+				if(resp!=""){
+					$('#sugerencia_nit_contacto_mod').html(resp);
+				}
+			}
+		})
+	})
+/*Funcion para ubicacion desde ubicacion_contacto_mod*/
+	$('#ubicacion_contacto_mod').keyup(function buscador_remitente(){
+		var search_muni_mod = $('#ubicacion_contacto_mod').val();
+
+		$('#sugerencia_ubicacion_mod').slideDown("fast");
+
+		$.ajax({
+			type: 'POST',
+			url:  'radicacion_entrada/buscador_remitente.php',
+			data: ('search_muni_mod='+search_muni_mod+'&desde_formulario=1'),
+			success: function(resp){
+				if(resp!=""){
+					$('#sugerencia_ubicacion_mod').html(resp);
+				}
+			}
+		})
+	})
+
 })
 /*Fin script para buscador contactos*/
 /*Funciones para desplegar ventana modal contacto*/
@@ -115,6 +165,11 @@ function cargar_valor_municipio(nombre_municipio,nombre_departamento,nombre_pais
 	$('#sugerencia_ubicacion').slideUp("fast");
 	$('#error_ubicacion_contacto').slideUp("fast");
 }
+function cargar_valor_municipio_mod(nombre_municipio_mod,nombre_departamento_mod,nombre_pais_mod,nombre_continente_mod){
+	$('#ubicacion_contacto_mod').val(nombre_municipio_mod+'('+nombre_departamento_mod+') '+nombre_pais_mod+'-'+nombre_continente_mod)
+	$('#sugerencia_ubicacion_mod').slideUp("fast");
+	$('#error_ubicacion_contacto_mod').slideUp("fast");
+}
 /*Carga el administrador de municipios*/
 function carga_administrador_municipios() {
 	$("#contenido").load("admin_muni/index_municipios.php");
@@ -131,6 +186,8 @@ function espacios_nit(){
 	str = str.replace('-','',str);
 	str = str.replace('°','',str);
 	str = str.replace('#','',str);
+	str = str.replace("/","",str);
+	str = str.replace("*","",str);
 	str = str.replace("'","",str);	
 	str = str.replace(',','',str);
 	str = str.replace(/\s/g, '');
@@ -143,6 +200,34 @@ function espacios_direccion(){
 	str = str.replace('°','',str);
 	str = str.replace('#','',str);
 	str = str.replace("'","",str);	
+	str = str.replace('/','',str);
+	str = str.replace("|","",str);
+	str = str.replace(',','',str);
+	
+	$('#direccion_contacto').val(str.toUpperCase());
+}
+function espacios_nit_mod(){
+	var str = $('#nit_contacto_mod').val();
+	str = str.replace('-','',str);
+	str = str.replace('°','',str);
+	str = str.replace('#','',str);
+	str = str.replace("'","",str);	
+	str = str.replace("|","",str);
+	str = str.replace("/","",str);
+	str = str.replace("*","",str);	
+	str = str.replace(',','',str);
+	str = str.replace(/\s/g, '');
+
+	$('#nit_contacto_mod').val(str.toUpperCase());
+}
+function espacios_direccion_mod(){
+	var str = $('#direccion_contacto').val();
+	str = str.replace('-','',str);
+	str = str.replace('°','',str);
+	str = str.replace('#','',str);
+	str = str.replace("'","",str);
+	str = str.replace("/","",str);
+	str = str.replace("*","",str);
 	str = str.replace('|','',str);	
 	str = str.replace(',','',str);
 	
@@ -257,7 +342,6 @@ $(function buscador_municipios_para_contacto(){
 		//$('#resultados').html('<h2><img src="/imagenes/loading.gif" alt="" /></h2>');
 		//$('#contenido').load('radicacion_entrada/entrada.php',{var1:nombre_contacto, var2:nit_contacto, var3:ubicacion_contacto, var4:direccion_contacto, var5:telefono_contacto, var6:mail_contacto, var7:representante_legal, var8:codigo_contacto})
 
-
 		$.ajax({
 			type: 'POST',
 			url: 'admin_muni/buscador_municipios.php',
@@ -273,4 +357,7 @@ $(function buscador_municipios_para_contacto(){
 		})
 	})
 })
+/*Fin script para buscador de municipios en Formulario Agregar Contacto*/
+/*Script para buscador de municipios en Formulario Modificar Contacto*/
+
 /*Fin script para buscador de municipios en Formulario Agregar Contacto*/

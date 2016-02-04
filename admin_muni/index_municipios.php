@@ -33,19 +33,19 @@
 						</tr>
 						<tr>
 							<td>País :</td>
-							<td><input type="text" value="Colombia" name="pais" id="pais">
+							<td><input type="text" value="Colombia" name="pais" id="pais" onkeyup="espacios_pais()">
 								<div id="error_pais" class="errores">El nombre del país es obligatorio</div>
 							</td>
 						</tr>
 						<tr>
 							<td>Departamento :</td>
-							<td><input type="text" placeholder="Digite Departamento" name="departamento" id="departamento">
+							<td><input type="text" placeholder="Digite Departamento" name="departamento" id="departamento" onkeyup="espacios_departamento()">
 								<div id="error_departamento" class="errores">El nombre del departamento es obligatorio</div>
 							</td>
 						</tr>
 						<tr>
 							<td>Municipio :</td>
-							<td><input type="text" placeholder="Digite Municipio" name="municipio" id="municipio">
+							<td><input type="text" placeholder="Digite Municipio" name="municipio" id="municipio" onkeyup="espacios_municipio()">
 								<div id="error_municipio" class="errores">El nombre del municipio es obligatorio</div>
 							</td>
 						</tr>

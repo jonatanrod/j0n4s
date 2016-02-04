@@ -65,17 +65,18 @@ require_once('../login/conexion.php');
 				<h1>Formulario Modificar Datos del Remitente</h1>
 				<hr>
 				<form method="post" id ="modifica_datos_contacto" action="radicacion_entrada/query_contactos.php">
-							<input type="hidden" name="tipo_formulario" value="modificar_contacto">
+					<input type="hidden" name="tipo_formulario" value="modificar_contacto">
 
-					<table border = '0'>
+					<table border='0'>
 						<tr>
 							<td>
 								Nombre completo (Incluyendo Sigla) :
 							</td>
 							<td class="celda">
-								<input type="text" value="<?php echo $nombre_contacto ?>" id="nombre_contacto" name="nombre_contacto" >
-								<input type="hidden" value="<?php echo $nombre_contacto ?>" name="ant_nombre_contacto" id="ant_nombre_contacto">			
-								<div id="error_nombre_contacto" class="errores">El nombre del contacto es obligatorio</div>
+								<input type="text" value="<?php echo $nombre_contacto ?>" id="nombre_contacto_mod" name="nombre_contacto" >
+								<input type="hidden" value="<?php echo $nombre_contacto ?>" name="ant_nombre_contacto" id="ant_nombre_contacto">	
+								<div id="sugerencia_nombre_contacto_mod"></div>		
+								<div id="error_nombre_contacto_mod" class="errores">El nombre del contacto es obligatorio</div>
 							</td>
 						</tr>
 						<tr>
@@ -83,9 +84,10 @@ require_once('../login/conexion.php');
 								NIT - Identificación :
 							</td>
 							<td class="celda">
-								<input type="text" value="<?php echo $nit_contacto ?>" id="nit_contacto" name="nit_contacto">
+								<input type="text" value="<?php echo $nit_contacto ?>" id="nit_contacto_mod" name="nit_contacto_mod"  onkeyup="espacios_nit_mod()";>
 								<input type="hidden" value="<?php echo $nit_contacto ?>" id="ant_nit_contacto" name="ant_nit_contacto">
-								<div id="error_nit_contacto" class="errores">El NIT o número de identificación del contacto es obligatorio</div>
+								<div id="error_nit_contacto_mod" class="errores">El NIT o número de identificación del contacto es obligatorio</div>
+								<div id="sugerencia_nit_contacto_mod"></div>
 							</td>
 						</tr>
 						<tr>
@@ -93,9 +95,10 @@ require_once('../login/conexion.php');
 								Ubicación contacto : 
 							</td>
 							<td class="celda">
-								<input type="text" value= "<?php echo $ubicacion_contacto ?>" id="ubicacion_contacto" name="ubicacion_contacto">
+								<input type="text" value= "<?php echo $ubicacion_contacto ?>" id="ubicacion_contacto_mod" name="ubicacion_contacto_mod">
 								<input type="hidden" value= "<?php echo $ubicacion_contacto ?>" id="ant_ubicacion_contacto" name="ant_ubicacion_contacto">
-								<div id="error_ubicacion_contacto" class="errores">La ubicación del contacto es obligatoria. 
+								<div id="sugerencia_ubicacion_mod"></div>
+								<div id="error_ubicacion_contacto_mod" class="errores">La ubicación del contacto es obligatoria. 
 									En caso que no encuentre una ubicación correcta, comuníquese con el administrador del sistema.
 								</div>
 							</td>
@@ -145,7 +148,7 @@ require_once('../login/conexion.php');
 										}
 									?>
 								>
-								<input type="hidden" value="<?php echo $representante_legal ?>" id="representante_legal" name="representante_legal">	
+								<input type="hidden" value="<?php echo $ant_representante_legal ?>" id="ant_representante_legal" name="ant_representante_legal">	
 							</td>
 						</tr>
 						<tr>

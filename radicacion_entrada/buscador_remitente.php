@@ -76,8 +76,8 @@ voy a mostrar.*/
 					//echo "string";
 				}
 			}
-		}elseif(isset($_GET['search_nit'])){
-			$busca_nit = $_GET['search_nit'];
+		}elseif(isset($_POST['search_nit'])){
+			$busca_nit = $_POST['search_nit'];
 		
 					$consulta_nit = "SELECT * FROM contactos WHERE UPPER(nombre_contacto)
 					LIKE UPPER('%".$busca_nit."%') or nit_contacto LIKE 
@@ -172,7 +172,7 @@ voy a mostrar.*/
 
 			/*Hasta aqui debe ir la etiqueta "a href" para que cuando haga clic*/
 
-					echo "</div>";//cierra div class='resultado_municipio'(art)
+					echo "</div>";//cierra div class='sugerencia_contacto'(art)
 					}
 				}while ($fila=pg_fetch_assoc($fila));
 			}elseif($registros>0 && $busca_muni==''){
@@ -187,6 +187,63 @@ voy a mostrar.*/
 					}else{
 						if($formulario_nuevo_contacto=='0'){
 						echo "<div> formulario 1</div>";
+
+						}elseif($formulario_nuevo_contacto=='1'){
+							echo "<div> No se han encontrado resultados. Si desea ingresar un nuevo municipio haga click 
+							<a href='javascript:carga_administrador_municipios();'>aqui</a> </div>";
+						}else{
+							echo "<div> formulario2 </div> ";
+						}
+					}
+
+					
+				}
+			}
+		}elseif(isset($_POST['search_muni_mod'])){
+			$busca_muni_mod = $_POST['search_muni_mod'];
+		
+					$consulta_municipio = "SELECT * FROM municipios WHERE UPPER(nombre_municipio)
+					LIKE UPPER('%".$busca_muni_mod."%') order by nombre_municipio limit 10";
+
+					$fila_municipio_mod = pg_query($conectado,$consulta_municipio);
+			/*Calcula el numero de registros que genera la consulta anterior.*/
+					$registros= pg_num_rows($fila_municipio_mod);
+			/*Recorre el array generado e imprime uno a uno los resultados.*/	
+
+			if($registros>0 && $busca_muni_mod!=''){//$busca_muni= $search
+				do{
+					for ($i=0;$i<$registros;$i++){
+						$linea2 = pg_fetch_array($fila_municipio_mod);
+
+						$nombre_municipio_mod = $linea2['nombre_municipio'];
+						$nombre_departamento_mod = $linea2['nombre_departamento'];
+						$nombre_pais_mod = $linea2['nombre_pais'];
+						$nombre_continente_mod = $linea2['nombre_continente'];
+
+					echo "<div class='sugerencia_contacto'>";
+
+			/* Aqui defino cuál va a ser el comportamiento al dar clic sobre el resultado obtenido desde el "a href" */
+						echo "<a href=\"javascript:cargar_valor_municipio_mod('$nombre_municipio_mod','$nombre_departamento_mod','$nombre_pais_mod','$nombre_continente_mod')\">";						
+								echo $nombre_municipio_mod." (".
+									 $nombre_departamento_mod.") ";
+								echo "<span>".$nombre_pais_mod." - ".$nombre_continente_mod." "."</span>";			
+						echo "</a>";
+					echo "</div>";//cierra div class='sugerencia_contacto'(art)
+			/*Hasta aqui debe ir la etiqueta "a href" para que cuando haga clic*/
+					}
+				}while ($fila=pg_fetch_assoc($fila));
+			}elseif($registros>0 && $busca_muni_mod==''){
+				echo "<div> Ingresa un parámetro de búsqueda</div>";
+			}elseif($busca_muni_mod!='' && $registros<1 && $busca_muni!='BOGOTA(D.C.) COLOMBIA-AMERICA'){
+						echo "<div> No se han encontrado resultados con el valor digitado. Si desea ingresar un nuevo municipio haga click 
+							<a href='javascript:carga_administrador_municipios();'>aqui</a> </div>";
+			}else{
+				if($registros<1 ){
+					if($busca_muni='BOGOTA(D.C.) COLOMBIA-AMERICA'){
+						echo "<div>yyy </div>";
+					}else{
+						if($formulario_nuevo_contacto=='0'){
+						echo "<div> formulario_nuevo_contacto=='0'</div>";
 
 						}elseif($formulario_nuevo_contacto=='1'){
 							echo "<div> No se han encontrado resultados. Si desea ingresar un nuevo municipio haga click 

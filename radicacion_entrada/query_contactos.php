@@ -19,7 +19,7 @@
 		$usuario = 'Jonas';//Por definir como lo voy a recuperar.
 		$fecha_modificacion = $fecha_hoy;//$fecha_hoy es del formato "Jueves 28 de Enero de 2016"
 
-		echo "$fecha_modificacion <br>".$_POST['tipo_formulario']."<br>kjhg";
+		//echo "$fecha_modificacion <br>".$_POST['tipo_formulario']."<br>kjhg <br>";
 
 
 		if (!empty($_POST['nombre_contacto']) and !empty($_POST['nit_contacto']) and !empty($_POST['ubicacion_contacto']) and !empty($_POST['direccion_contacto'])and !empty($_POST['email_contacto'])){
@@ -64,7 +64,7 @@
 				$direccion_contacto=$_POST['direccion_contacto'];
 				$telefono_contacto=$_POST['telefono_contacto'];
 				$email_contacto=$_POST['email_contacto'];
-				$dignatario=$_POST['representante_legal_contacto'];
+				$representante_legal=$_POST['representante_legal'];
 
 				$ant_nombre_contacto=$_POST['ant_nombre_contacto'];
 				$ant_nit_contacto=$_POST['ant_nit_contacto'];
@@ -72,25 +72,27 @@
 				$ant_direccion_contacto=$_POST['ant_direccion_contacto'];
 				$ant_telefono_contacto=$_POST['ant_telefono_contacto'];
 				$ant_email_contacto=$_POST['ant_email_contacto'];
-				$ant_dignatario=$_POST['ant_representante_legal_contacto'];				
+				$ant_dignatario=$_POST['ant_representante_legal'];				
 
-				$query ="select * from contactos";
-			
+				$query ="update contactos set nombre_contacto = '$nombre_contacto', nit_contacto='$nit_contacto', ubicacion_contacto='$ubicacion_contacto',
+				direccion_contacto='$direccion_contacto', telefono_contacto='$telefono_contacto', mail_contacto='$email_contacto', representante_legal='$representante_legal' 
+				WHERE nombre_contacto='$ant_nombre_contacto' AND nit_contacto='$ant_nit_contacto' AND ubicacion_contacto='$ant_ubicacion_contacto' 
+				AND direccion_contacto='$ant_direccion_contacto';";
+
 				
 				if($fila=pg_query($conectado,$query)){
 					$query_verifica="SELECT * FROM contactos where nombre_contacto='$nombre_contacto'";
 
 					if($fila1=pg_query($conectado,$query_verifica)){
 						if($row=pg_fetch_array($fila1)){
-								var_dump($row);
 							$registros= pg_num_rows($fila1);
 
 							if($registros>0){
 								echo "<script> alert('El contacto ".$row['nombre_contacto']." ha sido modificado correctamente') 
-									//volver();
+									volver();
 								</script>";				
 							}else{
-								echo "<script> alert('El contacto NO se pudo crear. Revise los campos del formulario e intente nuevamente por favor.') 
+								echo "<script> alert('El contacto NO SE PUDO CREAR. Revise los campos del formulario e intente nuevamente por favor.') 
 									volver();
 								</script>";
 							}

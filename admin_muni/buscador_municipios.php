@@ -11,13 +11,13 @@
 		Lo pongo temporalmente 1 pero hay que definirlo.*/
 		if(isset($_POST['desde_formulario'])){
 			$desde_formulario = 1; 
-		}else
+		}
 		
 	/*Isset que ajax modifica para ejecutar la consulta que despliega las sugerencias */	
 		$search ='';
 		if(isset($_POST['search'])){
 			$search = $_POST['search'];
-		}
+		
 
 		$consulta = "SELECT * FROM municipios WHERE UPPER(nombre_municipio)
 		LIKE UPPER('%".$search."%')	order by nombre_municipio limit 10";
@@ -43,7 +43,7 @@
 							if($desde_formulario===1){
 								echo "<a href=\"javascript:cargar_modifica_municipio('$nombre_municipio','$nombre_departamento','$nombre_pais','$nombre_continente')\">";
 							}else{
-								echo "<a href=\"#\"> <script> alert('No, no hay Ahora formulario_nuevo_contacto es '+$desde_formulario);</script>";
+								echo "<a href=\"#\"> <script> alert('No, no hay Ahora formulario_nuevo_contacto es '+'$desde_formulario');</script>";
 							}
 			
 						/*Aqui defino cuál va a ser el comportamiento al dar click sobre el 
@@ -75,6 +75,7 @@
 				}
 				
 			}
+		}	
 	 ?>
  </body>
 </html>
