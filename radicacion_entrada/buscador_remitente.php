@@ -135,8 +135,7 @@ voy a mostrar.*/
 					echo "<div> </div>";
 
 				}elseif($formulario_nuevo_contacto=='1'){
-					echo "<div> No se han encontrado resultados. Si desea ingresar un nuevo contacto haga click 
-					<a href='javascript:abrirVentanaAgregarContacto();'>aqui</a> </div>";
+					echo "<div>  </div>";
 				}else{
 				}
 			}

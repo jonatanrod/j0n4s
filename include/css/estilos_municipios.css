@@ -129,6 +129,7 @@ body{
  de principal3.php*/			
 @media screen and (max-width: 768px){
 
+	
 	#ventana{
 		color: #FFFFFF;
 		display: none;
@@ -159,7 +160,7 @@ body{
 		top: 0;
 		width: 100%;
 	}
-	#ventana2 .form{
+	#ventana2 form{
 		background: #585858;
 		border-radius: 20px;
 		color:#FFFFFF;
@@ -170,6 +171,9 @@ body{
 		right: 2%;
 		top: 2px;
 		width: 85%;
+	}
+	.blanco{
+		color: #FFFFFF;
 	}
 }
 /* Fin estilos al form cuando es movil o ventana menos de 768px de principal3.php*/	

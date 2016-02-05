@@ -12,13 +12,13 @@ require_once('../login/conexion.php');
 	<link rel="stylesheet" href="include/css/estilos_entrada.css">
 </head>
 <body>
-	<div class="container">
+	<div id="formulario_radicacion">
 		<div class="cerrar">
 			<a href="javascript:atras()">Volver Atras</a>
 		</div>
-		<span id="titulo_radicacion"><strong><h1>Radicación de Entrada</h1></strong></span><br/>
+		<span id="titulo_radicacion"><strong><center><h1>Radicación de Entrada</h1></center></strong></span>
 		<div class="contenido">
-			<strong> Usted esta radicando un documento que proviene desde</strong> <br/>
+			<h3><strong> Usted esta radicando un documento para el remitente / destinatario:</strong></h3>
 			<div class="sugerencia_contacto">
 				<?php
 					$nombre_contacto = $_POST['var1'];
@@ -45,7 +45,7 @@ require_once('../login/conexion.php');
 					</span> 
 				</a> 
 			</div> <!--Cierra div class="art"-->			
-				Dignatario/Persona que está enviando este radicado 
+				<h3>Dignatario/Persona que está enviando este radicado</h3>
 					
 				<input type="text" id="dignatario" 
 					
@@ -158,13 +158,17 @@ require_once('../login/conexion.php');
 					</table>
 				</form>
 			</div>
-		</div><!--Cierra div class"ventana"-->
-	</div><!--Cierra div class"container"-->
+		</div><!--Cierra div class"ventana_modal"-->
+	</div><!--Cierra div "formulario_radicacion"-->
+	<div id="previsualizacion">
+		<img src="imagenes/encabezado_radicado.png" id="encabezado_radicado">
+		<img src="imagenes/marca_agua.png" id="marca_agua">
+		<img src="imagenes/piedepagina_radicado.png" id="piedepagina_radicado">
 
-
-
-
-
-	
+		<?php 
+			echo "$nombre_contacto $nit_contacto $ubicacion_contacto $direccion_contacto $telefono_contacto $mail_contacto 
+					$representante_legal $codigo_contacto";	
+		 ?>			 	
+	</div><!--Cierra div "previsualizacion"-->
 </body>
 </html>

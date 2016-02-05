@@ -21,6 +21,24 @@ $(function buscador_municipios(){
 			}
 		})
 	})
+
+	$('#municipio').keyup(function buscador_municipios(){
+		var muni = $('#municipio').val();
+		
+		$.ajax({
+			type: 'POST',
+			url: 'admin_muni/buscador_municipios.php',
+			data: {
+				'busca_municipio' : muni,
+				'desde_formulario' : '1'
+			},			
+			success: function(resp){
+				if(resp!=""){
+					$('#sugerencia_municipio').html(resp);
+				}
+			}
+		})
+	})
 })
 /*Fin script para buscador del administrador de municipios*/
 /*Función para cargar datos al formulario de modificación de Municipio*/
@@ -147,9 +165,6 @@ function espacios_municipio(){
 }
 /*Fin funciónes para limpiar el formulario*/
 
-function verificar_municipio(municipio){
-	alert("hola"+municipio)					//Linea de prueba
-}
 /*Validación que los campos de pais, departamento y municipio no estén vacíos 
 para agregar un municipio nuevo.*/
 $(document).ready(function validar_varios_municipio(){
@@ -177,8 +192,14 @@ $(document).ready(function validar_varios_municipio(){
 					return false;
 				}else{
 					$("#error_municipio").fadeOut();
-					verificar_municipio(municipio);		//Linea de prueba
-					return false;						//Linea de prueba
+					if ($('.art').is (':visible')){//Comprueba si esta visualizando algun municipio que ya existe
+			            alert("El municipio que intenta crear ya existe. Evite por favor los duplicados.")
+			        	return false;
+			        }else{
+						return true;//Permite la creación del municipio
+			        }
+			     
+					
 				}
 			}		
 		}	

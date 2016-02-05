@@ -277,6 +277,12 @@ function grabar_contacto(){
 						return false;
 					}else{
 						$('#error_direccion').fadeOut();
+						if ($('.sugerencia_contacto').is (':visible')){//Comprueba si esta visualizando algun municipio que ya existe
+			            	alert("El contacto que intenta crear ya existe. Evite por favor los duplicados.")
+			        		return false;
+				        }else{
+							return false;//Permite la creación del municipio
+				        }
 					}
 				}
 			}
