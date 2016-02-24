@@ -10,6 +10,18 @@ require_once('../login/conexion.php');
 	<script type="text/javascript" src="include/js/funciones_contactos.js"></script>
 	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type ="text/css">
 	<link rel="stylesheet" href="include/css/estilos_entrada.css">
+	<script type="text/javascript">
+		function popup(url,ancho,alto){
+			var posicion_x=(screen.width/1)-(ancho);
+			var posicion_y=(screen.height/2)-(alto); 
+			
+			my_window = window.open(url, "", "width="+ancho+",height="+alto+",menubar=0,toolbar=0,directories=0,scrollbars=no,resizable=no,left="+posicion_x+",top="+posicion_y+"");
+		}
+
+	 	function closepopup(){
+	         my_window.close ();
+	   	}
+	</script>
 </head>
 <body>
 	<div id="formulario_radicacion">
@@ -19,6 +31,7 @@ require_once('../login/conexion.php');
 		<span id="titulo_radicacion"><strong><center><h1>Radicación de Entrada</h1></center></strong></span>
 		<div class="contenido">
 			<h3><strong> Usted esta radicando un documento para el remitente / destinatario:</strong></h3>
+			<input type="button"  value="Vista Previa del Radicado" onmouseover = "popup('radicacion_entrada/vista_previa.php',620,810)" onmouseout = "closepopup()">
 			<div class="sugerencia_contacto">
 				<?php
 					$nombre_contacto = $_POST['var1'];
@@ -47,7 +60,7 @@ require_once('../login/conexion.php');
 			</div> <!--Cierra div class="art"-->			
 				<h3>Dignatario/Persona que está enviando este radicado</h3>
 					
-				<input type="text" id="dignatario" 
+				<input type="text" class="celda" width="100%" 
 					
 					<?php  
 						$representante_legal_length = strlen($representante_legal);
@@ -161,9 +174,16 @@ require_once('../login/conexion.php');
 		</div><!--Cierra div class"ventana_modal"-->
 	</div><!--Cierra div "formulario_radicacion"-->
 	<div id="previsualizacion">
-		<img src="imagenes/encabezado_radicado.png" id="encabezado_radicado">
-		<img src="imagenes/marca_agua.png" id="marca_agua">
-		<img src="imagenes/piedepagina_radicado.png" id="piedepagina_radicado">
+		<div id="plantilla">
+			<!--<embed src="imagenes/plantilla.pdf" width="800px" height="600px"></embed>
+			<img src="imagenes/plantilla.png" id="encabezado_radicado" >
+		   
+		    <iframe src="http://docs.google.com/gview?url=181.143.163.90/orfeo/bodega/2015/300/20153000000992.pdf&embedded=true" style="width:100%; height:375px;" 
+
+			<div id="codigo_barras"></div>
+		-->
+				
+		</div>	
 
 		<?php 
 			echo "$nombre_contacto $nit_contacto $ubicacion_contacto $direccion_contacto $telefono_contacto $mail_contacto 
